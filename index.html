@@ -54,9 +54,9 @@
         .dot {
             width: 8px;
             height: 8px;
-            background: var(--accent);
+            background: #f97316;
             border-radius: 50%;
-            box-shadow: 0 0 10px var(--accent);
+            box-shadow: 0 0 10px #f97316;
         }
         .date-badge {
             font-size: 0.75rem;
@@ -94,7 +94,7 @@
         .label-tag {
             font-size: 0.72rem;
             font-weight: 700;
-            color: var(--accent);
+            color: #f97316;
             text-transform: uppercase;
             letter-spacing: 0.08em;
             display: inline-block;
@@ -141,8 +141,8 @@
             width: 22px;
             height: 22px;
             border-radius: 6px;
-            background: var(--accent-glow);
-            color: var(--accent);
+            background: rgba(249, 115, 22, 0.15);
+            color: #f97316;
             font-size: 0.75rem;
             font-weight: 700;
             display: flex;
@@ -150,7 +150,7 @@
             justify-content: center;
             flex-shrink: 0;
             margin-top: 2px;
-            border: 1px solid rgba(56, 189, 248, 0.25);
+            border: 1px solid rgba(249, 115, 22, 0.3);
         }
         .action-box {
             margin-top: 20px;
@@ -161,7 +161,7 @@
         .btn-complete {
             width: 100%;
             padding: 14px;
-            background: var(--accent);
+            background: #f97316;
             color: #07090e;
             border: none;
             border-radius: 12px;
@@ -210,24 +210,24 @@
         </div>
 
         <section class="materi-header">
-            <span class="label-tag">Materi Utama</span>
-            <h1 class="materi-title">What Holding You Back?</h1>
-            <p class="materi-series">Servo Mechanism Advanced • Mengenal & Menembus Batas Mental</p>
+            <span class="label-tag">Materi Hari Ini • Part 18</span>
+            <h1 class="materi-title">18. Bakar</h1>
+            <p class="materi-series">Servo Mechanism Advanced • Katarsis Mental & Hubungan Relasi / Tim</p>
         </section>
 
         <div class="section-header">Intisari Penting Hari Ini</div>
         <div class="points-card">
             <div class="point-item">
                 <div class="point-num">1</div>
-                <div><strong>Identifikasi Rem Bawah Sadar:</strong> Kenali pola pikir atau pengalaman masa lalu yang selama ini tanpa sadar menahan kita untuk melangkah lebih jauh.</div>
+                <div><strong>Katarsis Trauma Emosional:</strong> Teknik membakar tuntas memori pahit, rasa bersalah, dan luka batin masa lalu agar tidak lagi membajak sistem servo bawah sadar.</div>
             </div>
             <div class="point-item">
                 <div class="point-num">2</div>
-                <div><strong>Ubah Self-Image:</strong> Mekanisme servo dalam pikiran kita bekerja seperti autopilot. Jika citra diri tidak di-update, tindakan kita akan selalu kembali ke batas lama.</div>
+                <div><strong>Restorasi Relasi (Keluarga, Sahabat, Rekan):</strong> Hubungan dengan orang terdekat adalah cermin energi batin kita. Bersihkan dendam untuk membuka kembali saluran rezeki dan kepercayaan.</div>
             </div>
             <div class="point-item">
                 <div class="point-num">3</div>
-                <div><strong>Fokus Satu Aksi Nyata:</strong> Jangan pusingkan keseluruhan perjalanan hari ini. Selesaikan satu langkah kecil yang membuatmu bergerak maju.</div>
+                <div><strong>Fondasi Team Trust:</strong> Seseorang hanya bisa membangun kepercayaan tim yang solid ketika egonya sudah tuntas dilebur lewat proses katarsis diri.</div>
             </div>
         </div>
 
@@ -248,7 +248,7 @@
 
         const btn = document.getElementById('btnDone');
         const btnText = document.getElementById('btnText');
-        const storageKey = 'materi_done_' + new Date().toISOString().slice(0,10);
+        const storageKey = 'materi_bakar_done_' + new Date().toISOString().slice(0,10);
 
         if (localStorage.getItem(storageKey) === 'true') {
             setDoneState();
@@ -256,7 +256,7 @@
 
         function setDoneState() {
             btn.classList.add('done');
-            btnText.textContent = 'Hebat! Kamu Sudah Selesai Hari Ini 🎉';
+            btnText.textContent = 'Luar Biasa! Materi Hari Ini Selesai 🎉';
         }
 
         function toggleComplete() {
