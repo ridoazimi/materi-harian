@@ -3,271 +3,472 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Materi Hari Ini • Rido Azimi</title>
-    <meta name="theme-color" content="#07090e">
+    <title>Materi Hari Ini • 18. Bakar</title>
+    <meta name="theme-color" content="#0c0d12">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@1,6..72,400;1,6..72,500&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg: #07090e;
-            --surface: #0f141e;
-            --surface-hover: #161e2e;
-            --border: #1e293b;
-            --accent: #38bdf8;
-            --accent-hover: #0284c7;
-            --accent-glow: rgba(56, 189, 248, 0.12);
-            --text: #f8fafc;
-            --text-muted: #94a3b8;
-            --success: #10b981;
-            --success-glow: rgba(16, 185, 129, 0.15);
+            --bg-base: #0b0c10;
+            --surface-elevated: #13151b;
+            --surface-subtle: #191c24;
+            --border-subtle: #232733;
+            --border-focus: #42495d;
+            --text-high: #f1f2f4;
+            --text-mid: #9ba1b0;
+            --text-low: #656b7c;
+            --accent-ember: #e06030;
+            --accent-warm: #d97706;
+            --accent-subtle: rgba(224, 96, 48, 0.12);
+            --success-color: #10b981;
+            --success-bg: rgba(16, 185, 129, 0.12);
+            --radius-card: 14px;
+            --radius-button: 10px;
         }
-        * { box-sizing: border-box; margin: 0; padding: 0; -webkit-font-smoothing: antialiased; }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            -webkit-font-smoothing: antialiased;
+        }
+
         body {
-            background-color: var(--bg);
-            color: var(--text);
-            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-base);
+            color: var(--text-high);
+            font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
             min-height: 100vh;
-            padding: 16px 14px 40px;
+            padding: 20px 16px 48px;
             display: flex;
             flex-direction: column;
             align-items: center;
         }
-        .container {
+
+        .hub-shell {
             width: 100%;
-            max-width: 600px;
+            max-width: 580px;
         }
-        .top-bar {
+
+        /* Top Bar */
+        .top-meta {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding-bottom: 14px;
-            margin-bottom: 16px;
-            border-bottom: 1px solid var(--border);
+            margin-bottom: 20px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid var(--border-subtle);
         }
-        .app-title {
-            font-size: 0.95rem;
-            font-weight: 700;
-            letter-spacing: -0.01em;
-            color: var(--text);
+
+        .module-badge {
             display: flex;
             align-items: center;
             gap: 8px;
+            font-size: 0.76rem;
+            font-weight: 600;
+            letter-spacing: 0.04em;
+            color: var(--text-mid);
+            text-transform: uppercase;
         }
-        .dot {
-            width: 8px;
-            height: 8px;
-            background: #f97316;
+
+        .ember-indicator {
+            width: 7px;
+            height: 7px;
             border-radius: 50%;
-            box-shadow: 0 0 10px #f97316;
+            background-color: var(--accent-ember);
+            display: inline-block;
         }
-        .date-badge {
-            font-size: 0.75rem;
-            color: var(--text-muted);
-            font-weight: 500;
-            background: var(--surface);
-            padding: 4px 10px;
-            border-radius: 999px;
-            border: 1px solid var(--border);
+
+        .calendar-tag {
+            font-size: 0.78rem;
+            color: var(--text-mid);
+            font-variant-numeric: tabular-nums;
         }
-        .video-container {
-            width: 100%;
-            background: #000;
-            border-radius: 16px;
-            overflow: hidden;
-            border: 1px solid var(--border);
-            box-shadow: 0 12px 36px rgba(0, 0, 0, 0.6);
-            aspect-ratio: 16 / 9;
+
+        /* Player Box */
+        .viewport-wrapper {
             position: relative;
+            background: #000;
+            border-radius: var(--radius-card);
+            border: 1px solid var(--border-subtle);
+            overflow: hidden;
+            aspect-ratio: 16 / 9;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
         }
+
         video {
             width: 100%;
             height: 100%;
             object-fit: contain;
-            background: #000;
             display: block;
+            background: #000;
         }
-        .materi-header {
-            margin-top: 18px;
-            padding: 16px 18px;
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 14px;
+
+        /* Quick Controls for Mobile Convenience */
+        .playback-controls {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 10px;
+            padding: 6px 4px;
         }
-        .label-tag {
-            font-size: 0.72rem;
-            font-weight: 700;
-            color: #f97316;
-            text-transform: uppercase;
+
+        .speed-switch-group {
+            display: flex;
+            gap: 6px;
+        }
+
+        .speed-btn {
+            background: var(--surface-elevated);
+            border: 1px solid var(--border-subtle);
+            color: var(--text-mid);
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 6px 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.15s ease;
+            min-height: 36px;
+        }
+
+        .speed-btn.active {
+            background: var(--border-focus);
+            color: #fff;
+            border-color: var(--border-focus);
+        }
+
+        .skip-btn {
+            background: var(--surface-elevated);
+            border: 1px solid var(--border-subtle);
+            color: var(--text-mid);
+            font-size: 0.75rem;
+            font-weight: 500;
+            padding: 6px 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            min-height: 36px;
+        }
+
+        .skip-btn:active, .speed-btn:active {
+            transform: scale(0.96);
+        }
+
+        /* Narrative & Content Section */
+        .content-brief {
+            margin-top: 24px;
+        }
+
+        .topic-classification {
+            font-size: 0.74rem;
+            font-weight: 600;
+            color: var(--accent-ember);
             letter-spacing: 0.08em;
-            display: inline-block;
+            text-transform: uppercase;
             margin-bottom: 6px;
         }
-        .materi-title {
-            font-size: 1.25rem;
-            font-weight: 700;
-            line-height: 1.3;
-            color: #fff;
-            letter-spacing: -0.02em;
+
+        .headline-title {
+            font-family: "Newsreader", Georgia, serif;
+            font-size: 1.85rem;
+            font-weight: 500;
+            font-style: italic;
+            line-height: 1.2;
+            color: var(--text-high);
+            letter-spacing: -0.01em;
+            margin-bottom: 10px;
         }
-        .materi-series {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            margin-top: 4px;
+
+        .concept-statement {
+            font-size: 0.92rem;
+            line-height: 1.55;
+            color: var(--text-mid);
+            margin-bottom: 24px;
         }
-        .section-header {
-            font-size: 0.82rem;
-            font-weight: 700;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            letter-spacing: 0.06em;
-            margin: 22px 4px 10px;
-        }
-        .points-card {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 14px;
-            padding: 14px 16px;
+
+        /* Structural Lesson Takeaways */
+        .pillar-stack {
             display: flex;
             flex-direction: column;
             gap: 12px;
+            margin-bottom: 28px;
         }
-        .point-item {
+
+        .pillar-card {
+            background-color: var(--surface-elevated);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-card);
+            padding: 16px 18px;
+            display: flex;
+            gap: 16px;
+            align-items: flex-start;
+        }
+
+        .pillar-index {
+            font-family: "Newsreader", Georgia, serif;
+            font-style: italic;
+            font-size: 1.15rem;
+            color: var(--accent-ember);
+            flex-shrink: 0;
+            width: 24px;
+            line-height: 1;
+            padding-top: 2px;
+        }
+
+        .pillar-body h3 {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text-high);
+            margin-bottom: 4px;
+            line-height: 1.35;
+        }
+
+        .pillar-body p {
+            font-size: 0.84rem;
+            line-height: 1.5;
+            color: var(--text-mid);
+        }
+
+        /* Action & Completion Gate */
+        .action-container {
+            background: var(--surface-subtle);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-card);
+            padding: 18px 18px 16px;
+        }
+
+        .gate-instruction {
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-low);
+            margin-bottom: 14px;
+        }
+
+        .checklist-item {
             display: flex;
             align-items: flex-start;
             gap: 12px;
-            line-height: 1.45;
-            font-size: 0.9rem;
-            color: #e2e8f0;
+            margin-bottom: 14px;
+            cursor: pointer;
+            user-select: none;
         }
-        .point-num {
-            width: 22px;
-            height: 22px;
-            border-radius: 6px;
-            background: rgba(249, 115, 22, 0.15);
-            color: #f97316;
-            font-size: 0.75rem;
-            font-weight: 700;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+
+        .checklist-item input[type="checkbox"] {
+            appearance: none;
+            -webkit-appearance: none;
+            width: 20px;
+            height: 20px;
+            border: 1.5px solid var(--border-focus);
+            border-radius: 5px;
+            background: var(--bg-base);
+            margin-top: 1px;
             flex-shrink: 0;
-            margin-top: 2px;
-            border: 1px solid rgba(249, 115, 22, 0.3);
+            display: grid;
+            place-content: center;
+            transition: all 0.15s ease;
+            cursor: pointer;
         }
-        .action-box {
-            margin-top: 20px;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
+
+        .checklist-item input[type="checkbox"]:checked {
+            background-color: var(--accent-ember);
+            border-color: var(--accent-ember);
         }
-        .btn-complete {
+
+        .checklist-item input[type="checkbox"]:checked::before {
+            content: "";
+            width: 9px;
+            height: 5px;
+            border-left: 2px solid #fff;
+            border-bottom: 2px solid #fff;
+            transform: rotate(-45deg) translate(1px, -1px);
+        }
+
+        .checklist-label {
+            font-size: 0.86rem;
+            line-height: 1.4;
+            color: var(--text-mid);
+        }
+
+        .commit-button {
             width: 100%;
-            padding: 14px;
-            background: #f97316;
-            color: #07090e;
+            min-height: 48px;
+            margin-top: 10px;
+            padding: 12px 18px;
+            border-radius: var(--radius-button);
+            font-family: inherit;
+            font-size: 0.88rem;
+            font-weight: 600;
             border: none;
-            border-radius: 12px;
-            font-size: 0.95rem;
-            font-weight: 700;
+            background-color: var(--accent-ember);
+            color: #fff;
             cursor: pointer;
             transition: all 0.2s ease;
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 8px;
-            -webkit-tap-highlight-color: transparent;
         }
-        .btn-complete:active {
+
+        .commit-button:active {
             transform: scale(0.98);
         }
-        .btn-complete.done {
-            background: var(--success-glow);
-            color: var(--success);
-            border: 1px solid rgba(16, 185, 129, 0.4);
+
+        .commit-button.complete-state {
+            background-color: var(--success-bg);
+            border: 1px solid var(--success-color);
+            color: var(--success-color);
         }
-        .footer-note {
+
+        /* Footer */
+        .quiet-footer {
+            margin-top: 36px;
             text-align: center;
-            font-size: 0.78rem;
-            color: #64748b;
-            margin-top: 24px;
-            line-height: 1.4;
+            font-size: 0.74rem;
+            color: var(--text-low);
+            line-height: 1.5;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <header class="top-bar">
-            <div class="app-title">
-                <div class="dot"></div>
-                <span>Materi Hari Ini</span>
+    <main class="hub-shell">
+        <nav class="top-meta" aria-label="Status Sesi">
+            <div class="module-badge">
+                <span class="ember-indicator" aria-hidden="true"></span>
+                <span>Fokus Pembelajaran Mandiri</span>
             </div>
-            <div class="date-badge" id="todayDate">Fokus Harian</div>
-        </header>
+            <time class="calendar-tag" id="displayDate"></time>
+        </nav>
 
-        <div class="video-container">
-            <video id="player" controls playsinline webkit-playsinline preload="metadata">
+        <section class="viewport-wrapper" aria-label="Pemutar Materi Utama">
+            <video id="coreVideo" controls playsinline webkit-playsinline preload="metadata">
                 <source src="today.mp4" type="video/mp4">
-                Browser Anda tidak mendukung pemutar video.
+                Browser tidak mendukung pemutaran video.
             </video>
-        </div>
-
-        <section class="materi-header">
-            <span class="label-tag">Materi Hari Ini • Part 18</span>
-            <h1 class="materi-title">18. Bakar</h1>
-            <p class="materi-series">Servo Mechanism Advanced • Katarsis Mental & Hubungan Relasi / Tim</p>
         </section>
 
-        <div class="section-header">Intisari Penting Hari Ini</div>
-        <div class="points-card">
-            <div class="point-item">
-                <div class="point-num">1</div>
-                <div><strong>Katarsis Trauma Emosional:</strong> Teknik membakar tuntas memori pahit, rasa bersalah, dan luka batin masa lalu agar tidak lagi membajak sistem servo bawah sadar.</div>
+        <nav class="playback-controls" aria-label="Kontrol Pemutaran">
+            <div class="speed-switch-group">
+                <button type="button" class="speed-btn active" onclick="setSpeed(1.0, this)">1.0x</button>
+                <button type="button" class="speed-btn" onclick="setSpeed(1.25, this)">1.25x</button>
+                <button type="button" class="speed-btn" onclick="setSpeed(1.5, this)">1.5x</button>
             </div>
-            <div class="point-item">
-                <div class="point-num">2</div>
-                <div><strong>Restorasi Relasi (Keluarga, Sahabat, Rekan):</strong> Hubungan dengan orang terdekat adalah cermin energi batin kita. Bersihkan dendam untuk membuka kembali saluran rezeki dan kepercayaan.</div>
+            <div class="speed-switch-group">
+                <button type="button" class="skip-btn" onclick="skipTime(-10)">-10s</button>
+                <button type="button" class="skip-btn" onclick="skipTime(10)">+10s</button>
             </div>
-            <div class="point-item">
-                <div class="point-num">3</div>
-                <div><strong>Fondasi Team Trust:</strong> Seseorang hanya bisa membangun kepercayaan tim yang solid ketika egonya sudah tuntas dilebur lewat proses katarsis diri.</div>
-            </div>
-        </div>
+        </nav>
 
-        <div class="action-box">
-            <button class="btn-complete" id="btnDone" onclick="toggleComplete()">
-                <span>✓</span> <span id="btnText">Tandai Selesai Belajar Hari Ini</span>
+        <header class="content-brief">
+            <p class="topic-classification">Servo Mechanism Advanced • Modul Katarsis</p>
+            <h1 class="headline-title">18. Bakar</h1>
+            <p class="concept-statement">
+                Pembersihan total memori emosional dan trauma masa lalu agar sistem autopilot bawah sadar berhenti menyabotase langkah baru, membuka jalan bagi terciptanya relasi tim yang sehat.
+            </p>
+        </header>
+
+        <section class="pillar-stack" aria-label="Pilar Materi">
+            <article class="pillar-card">
+                <div class="pillar-index">01</div>
+                <div class="pillar-body">
+                    <h3>Katarsis dan Penghentian Sabotase Bawah Sadar</h3>
+                    <p>Beban emosional yang belum tuntas akan terus menjadi rem tak kasat mata. Teknik bakar berfungsi memutus rantai dendam, rasa bersalah, dan kegagalan lama secara sadar.</p>
+                </div>
+            </article>
+
+            <article class="pillar-card">
+                <div class="pillar-index">02</div>
+                <div class="pillar-body">
+                    <h3>Pembersihan Saluran Relasi Inti</h3>
+                    <p>Konflik internal selalu terpantul ke luar. Menyelesaikan persoalan batin dengan keluarga, kawan dekat, dan mitra kerja adalah kunci agar energi harian tidak bocor.</p>
+                </div>
+            </article>
+
+            <article class="pillar-card">
+                <div class="pillar-index">03</div>
+                <div class="pillar-body">
+                    <h3>Pondasi Kepercayaan Tim yang Utuh</h3>
+                    <p>Kepercayaan tim mustahil dibangun di atas fondasi individu yang masih defensif. Rasa aman bersama hanya muncul saat masing-masing orang berani menanggalkan ego pribadinya.</p>
+                </div>
+            </article>
+        </section>
+
+        <section class="action-container" aria-label="Pencatatan Komitmen Harian">
+            <h2 class="gate-instruction">Penyelesaian Harian</h2>
+            
+            <label class="checklist-item">
+                <input type="checkbox" id="checkWatch" onchange="syncGateState()">
+                <span class="checklist-label">Saya telah menyimak materi ini dari awal hingga tuntas</span>
+            </label>
+
+            <label class="checklist-item">
+                <input type="checkbox" id="checkReflect" onchange="syncGateState()">
+                <span class="checklist-label">Saya telah menentukan satu hal masa lalu yang saya bakar dan lepaskan hari ini</span>
+            </label>
+
+            <button type="button" class="commit-button" id="submitAction" onclick="finalizeDailySession()">
+                Tandai Selesai dan Simpan Progres
             </button>
-        </div>
+        </section>
 
-        <div class="footer-note">
-            Satu materi per hari. Tetap konsisten, jangan terburu-buru.
-        </div>
-    </div>
+        <footer class="quiet-footer">
+            <p>Satu materi terpilih per hari. Konsistensi kecil yang dirawat menghasilkan pergeseran besar.</p>
+        </footer>
+    </main>
 
     <script>
-        const dateOptions = { weekday: 'long', day: 'numeric', month: 'short' };
-        document.getElementById('todayDate').textContent = new Intl.DateTimeFormat('id-ID', dateOptions).format(new Date());
+        const dateOptions = { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' };
+        document.getElementById('displayDate').textContent = new Intl.DateTimeFormat('id-ID', dateOptions).format(new Date());
 
-        const btn = document.getElementById('btnDone');
-        const btnText = document.getElementById('btnText');
-        const storageKey = 'materi_bakar_done_' + new Date().toISOString().slice(0,10);
+        const video = document.getElementById('coreVideo');
+        const checkWatch = document.getElementById('checkWatch');
+        const checkReflect = document.getElementById('checkReflect');
+        const submitBtn = document.getElementById('submitAction');
+        const dayKey = 'bakar_complete_' + new Date().toISOString().slice(0, 10);
 
-        if (localStorage.getItem(storageKey) === 'true') {
-            setDoneState();
+        function setSpeed(rate, element) {
+            if (video) video.playbackRate = rate;
+            document.querySelectorAll('.speed-btn').forEach(btn => btn.classList.remove('active'));
+            element.classList.add('active');
         }
 
-        function setDoneState() {
-            btn.classList.add('done');
-            btnText.textContent = 'Luar Biasa! Materi Hari Ini Selesai 🎉';
+        function skipTime(seconds) {
+            if (video) video.currentTime = Math.max(0, Math.min(video.duration || 0, video.currentTime + seconds));
         }
 
-        function toggleComplete() {
-            if (btn.classList.contains('done')) {
-                btn.classList.remove('done');
-                btnText.textContent = 'Tandai Selesai Belajar Hari Ini';
-                localStorage.removeItem(storageKey);
+        function syncGateState() {
+            if (localStorage.getItem(dayKey) === 'done') return;
+            const bothChecked = checkWatch.checked && checkReflect.checked;
+            submitBtn.style.opacity = bothChecked ? '1' : '0.75';
+        }
+
+        function finalizeDailySession() {
+            const isDone = localStorage.getItem(dayKey) === 'done';
+            if (isDone) {
+                localStorage.removeItem(dayKey);
+                checkWatch.checked = false;
+                checkReflect.checked = false;
+                submitBtn.classList.remove('complete-state');
+                submitBtn.textContent = 'Tandai Selesai dan Simpan Progres';
+                submitBtn.style.opacity = '0.75';
             } else {
-                setDoneState();
-                localStorage.setItem(storageKey, 'true');
+                localStorage.setItem(dayKey, 'done');
+                checkWatch.checked = true;
+                checkReflect.checked = true;
+                submitBtn.classList.add('complete-state');
+                submitBtn.textContent = 'Sesi Hari Ini Selesai Dipelajari';
+                submitBtn.style.opacity = '1';
             }
+        }
+
+        // Restore state on load
+        if (localStorage.getItem(dayKey) === 'done') {
+            checkWatch.checked = true;
+            checkReflect.checked = true;
+            submitBtn.classList.add('complete-state');
+            submitBtn.textContent = 'Sesi Hari Ini Selesai Dipelajari';
+        } else {
+            syncGateState();
         }
     </script>
 </body>
