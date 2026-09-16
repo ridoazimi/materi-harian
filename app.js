@@ -138,3 +138,5 @@ $("todayDate").textContent=new Intl.DateTimeFormat("id-ID",{weekday:"long",day:"
 refresh();loadLessons();
 
 document.addEventListener("keydown",e=>{if(e.key==="Escape"){if($("celebrate").open){e.preventDefault();$("celebrate").close();}else if($("library").open){e.preventDefault();$("library").close();}}});
+
+const executionScript=document.createElement("script");executionScript.src="execution.js?v=1";document.body.append(executionScript);
