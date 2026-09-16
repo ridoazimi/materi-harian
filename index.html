@@ -2,474 +2,1166 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Materi Hari Ini • 18. Bakar</title>
-    <meta name="theme-color" content="#0c0d12">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>Materi Harian — Rido Azimi</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@1,6..72,400;1,6..72,500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@1,6..72,400;1,6..72,500&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-base: #0b0c10;
-            --surface-elevated: #13151b;
-            --surface-subtle: #191c24;
-            --border-subtle: #232733;
-            --border-focus: #42495d;
-            --text-high: #f1f2f4;
-            --text-mid: #9ba1b0;
-            --text-low: #656b7c;
+            --bg-base: #0a0c10;
+            --bg-surface: #12151c;
+            --bg-elevated: #181d26;
+            --border-subtle: #232936;
+            --border-highlight: #343d50;
+            --text-primary: #f0f3f8;
+            --text-secondary: #9aa5b8;
+            --text-tertiary: #5d677a;
             --accent-ember: #e06030;
-            --accent-warm: #d97706;
-            --accent-subtle: rgba(224, 96, 48, 0.12);
-            --success-color: #10b981;
-            --success-bg: rgba(16, 185, 129, 0.12);
-            --radius-card: 14px;
-            --radius-button: 10px;
+            --accent-ember-dark: #b84318;
+            --accent-flame: #ff7844;
+            --flame-gold: #ffb020;
+            --status-success: #22c55e;
+            --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            --font-serif: 'Newsreader', Georgia, serif;
+            --font-mono: 'JetBrains Mono', monospace;
         }
 
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            -webkit-font-smoothing: antialiased;
+            -webkit-tap-highlight-color: transparent;
         }
 
         body {
             background-color: var(--bg-base);
-            color: var(--text-high);
-            font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            color: var(--text-primary);
+            font-family: var(--font-sans);
             min-height: 100vh;
-            padding: 20px 16px 48px;
+            display: flex;
+            justify-content: center;
+            padding: 16px 12px 100px;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 680px;
             display: flex;
             flex-direction: column;
-            align-items: center;
+            gap: 20px;
         }
 
-        .hub-shell {
-            width: 100%;
-            max-width: 580px;
-        }
-
-        /* Top Bar */
-        .top-meta {
+        /* TOP NAVIGATION & DUOLINGO FLAME STREAK */
+        .top-bar {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            margin-bottom: 20px;
             padding-bottom: 12px;
             border-bottom: 1px solid var(--border-subtle);
         }
 
-        .module-badge {
+        .meta-brand {
             display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 0.76rem;
-            font-weight: 600;
-            letter-spacing: 0.04em;
-            color: var(--text-mid);
-            text-transform: uppercase;
+            flex-direction: column;
+            gap: 2px;
         }
 
-        .ember-indicator {
-            width: 7px;
-            height: 7px;
-            border-radius: 50%;
-            background-color: var(--accent-ember);
+        .meta-label {
+            font-size: 11px;
+            font-family: var(--font-mono);
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--accent-ember);
+            font-weight: 600;
+        }
+
+        .meta-user {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-secondary);
+        }
+
+        .top-actions {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* DUOLINGO STYLE FIRE STREAK BADGE */
+        .streak-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 12px;
+            border-radius: 999px;
+            background: rgba(224, 96, 48, 0.12);
+            border: 1px solid rgba(224, 96, 48, 0.35);
+            color: var(--accent-flame);
+            font-family: var(--font-mono);
+            font-weight: 700;
+            font-size: 13px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            box-shadow: 0 0 16px rgba(224, 96, 48, 0.15);
+        }
+
+        .streak-badge:active {
+            transform: scale(0.96);
+        }
+
+        .streak-badge.ignited {
+            background: linear-gradient(135deg, rgba(224, 96, 48, 0.25), rgba(255, 176, 32, 0.2));
+            border-color: var(--flame-gold);
+            color: #fff;
+            box-shadow: 0 0 24px rgba(255, 120, 68, 0.4);
+            animation: flame-pulse 2s infinite ease-in-out;
+        }
+
+        @keyframes flame-pulse {
+            0%, 100% { box-shadow: 0 0 16px rgba(224, 96, 48, 0.3); }
+            50% { box-shadow: 0 0 28px rgba(255, 176, 32, 0.6); }
+        }
+
+        .streak-flame-icon {
+            width: 18px;
+            height: 18px;
+            fill: currentColor;
             display: inline-block;
         }
 
-        .calendar-tag {
-            font-size: 0.78rem;
-            color: var(--text-mid);
-            font-variant-numeric: tabular-nums;
+        /* SIDEBAR TOGGLE BUTTON */
+        .sidebar-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 7px 12px;
+            border-radius: 8px;
+            background: var(--bg-surface);
+            border: 1px solid var(--border-highlight);
+            color: var(--text-primary);
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
         }
 
-        /* Player Box */
-        .viewport-wrapper {
+        .sidebar-btn:hover, .sidebar-btn:active {
+            background: var(--bg-elevated);
+            border-color: var(--text-secondary);
+        }
+
+        /* HEADER BLOCK */
+        .header-block {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .category-tag {
+            font-size: 12px;
+            font-family: var(--font-mono);
+            color: var(--text-tertiary);
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .lesson-title {
+            font-family: var(--font-serif);
+            font-style: italic;
+            font-size: 32px;
+            line-height: 1.15;
+            font-weight: 400;
+            letter-spacing: -0.01em;
+            color: var(--text-primary);
+        }
+
+        .lesson-desc {
+            font-size: 14px;
+            line-height: 1.6;
+            color: var(--text-secondary);
+        }
+
+        /* VIDEO CONTAINER */
+        .video-wrapper {
             position: relative;
+            width: 100%;
             background: #000;
-            border-radius: var(--radius-card);
-            border: 1px solid var(--border-subtle);
+            border-radius: 12px;
             overflow: hidden;
+            border: 1px solid var(--border-highlight);
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.6);
             aspect-ratio: 16 / 9;
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
         }
 
         video {
             width: 100%;
             height: 100%;
-            object-fit: contain;
             display: block;
+            object-fit: contain;
             background: #000;
         }
 
-        /* Quick Controls for Mobile Convenience */
-        .playback-controls {
+        /* QUICK CONTROLS */
+        .controls-row {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            margin-top: 10px;
-            padding: 6px 4px;
-        }
-
-        .speed-switch-group {
-            display: flex;
-            gap: 6px;
-        }
-
-        .speed-btn {
-            background: var(--surface-elevated);
+            padding: 8px 12px;
+            background: var(--bg-surface);
+            border-radius: 8px;
             border: 1px solid var(--border-subtle);
-            color: var(--text-mid);
-            font-size: 0.75rem;
-            font-weight: 600;
-            padding: 6px 12px;
-            border-radius: 6px;
-            cursor: pointer;
-            transition: all 0.15s ease;
-            min-height: 36px;
-        }
-
-        .speed-btn.active {
-            background: var(--border-focus);
-            color: #fff;
-            border-color: var(--border-focus);
-        }
-
-        .skip-btn {
-            background: var(--surface-elevated);
-            border: 1px solid var(--border-subtle);
-            color: var(--text-mid);
-            font-size: 0.75rem;
-            font-weight: 500;
-            padding: 6px 12px;
-            border-radius: 6px;
-            cursor: pointer;
-            min-height: 36px;
-        }
-
-        .skip-btn:active, .speed-btn:active {
-            transform: scale(0.96);
-        }
-
-        /* Narrative & Content Section */
-        .content-brief {
-            margin-top: 24px;
-        }
-
-        .topic-classification {
-            font-size: 0.74rem;
-            font-weight: 600;
-            color: var(--accent-ember);
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-            margin-bottom: 6px;
-        }
-
-        .headline-title {
-            font-family: "Newsreader", Georgia, serif;
-            font-size: 1.85rem;
-            font-weight: 500;
-            font-style: italic;
-            line-height: 1.2;
-            color: var(--text-high);
-            letter-spacing: -0.01em;
-            margin-bottom: 10px;
-        }
-
-        .concept-statement {
-            font-size: 0.92rem;
-            line-height: 1.55;
-            color: var(--text-mid);
-            margin-bottom: 24px;
-        }
-
-        /* Structural Lesson Takeaways */
-        .pillar-stack {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            margin-bottom: 28px;
-        }
-
-        .pillar-card {
-            background-color: var(--surface-elevated);
-            border: 1px solid var(--border-subtle);
-            border-radius: var(--radius-card);
-            padding: 16px 18px;
-            display: flex;
-            gap: 16px;
-            align-items: flex-start;
-        }
-
-        .pillar-index {
-            font-family: "Newsreader", Georgia, serif;
-            font-style: italic;
-            font-size: 1.15rem;
-            color: var(--accent-ember);
-            flex-shrink: 0;
-            width: 24px;
-            line-height: 1;
-            padding-top: 2px;
-        }
-
-        .pillar-body h3 {
-            font-size: 0.9rem;
-            font-weight: 600;
-            color: var(--text-high);
-            margin-bottom: 4px;
-            line-height: 1.35;
-        }
-
-        .pillar-body p {
-            font-size: 0.84rem;
-            line-height: 1.5;
-            color: var(--text-mid);
-        }
-
-        /* Action & Completion Gate */
-        .action-container {
-            background: var(--surface-subtle);
-            border: 1px solid var(--border-subtle);
-            border-radius: var(--radius-card);
-            padding: 18px 18px 16px;
-        }
-
-        .gate-instruction {
-            font-size: 0.8rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            color: var(--text-low);
-            margin-bottom: 14px;
-        }
-
-        .checklist-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 12px;
-            margin-bottom: 14px;
-            cursor: pointer;
-            user-select: none;
-        }
-
-        .checklist-item input[type="checkbox"] {
-            appearance: none;
-            -webkit-appearance: none;
-            width: 20px;
-            height: 20px;
-            border: 1.5px solid var(--border-focus);
-            border-radius: 5px;
-            background: var(--bg-base);
-            margin-top: 1px;
-            flex-shrink: 0;
-            display: grid;
-            place-content: center;
-            transition: all 0.15s ease;
-            cursor: pointer;
-        }
-
-        .checklist-item input[type="checkbox"]:checked {
-            background-color: var(--accent-ember);
-            border-color: var(--accent-ember);
-        }
-
-        .checklist-item input[type="checkbox"]:checked::before {
-            content: "";
-            width: 9px;
-            height: 5px;
-            border-left: 2px solid #fff;
-            border-bottom: 2px solid #fff;
-            transform: rotate(-45deg) translate(1px, -1px);
-        }
-
-        .checklist-label {
-            font-size: 0.86rem;
-            line-height: 1.4;
-            color: var(--text-mid);
-        }
-
-        .commit-button {
-            width: 100%;
-            min-height: 48px;
-            margin-top: 10px;
-            padding: 12px 18px;
-            border-radius: var(--radius-button);
-            font-family: inherit;
-            font-size: 0.88rem;
-            font-weight: 600;
-            border: none;
-            background-color: var(--accent-ember);
-            color: #fff;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            font-size: 12px;
             gap: 8px;
         }
 
-        .commit-button:active {
-            transform: scale(0.98);
+        .control-group {
+            display: flex;
+            align-items: center;
+            gap: 6px;
         }
 
-        .commit-button.complete-state {
-            background-color: var(--success-bg);
-            border: 1px solid var(--success-color);
-            color: var(--success-color);
+        .btn-ctl {
+            background: var(--bg-elevated);
+            border: 1px solid var(--border-subtle);
+            color: var(--text-secondary);
+            padding: 5px 9px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-family: var(--font-mono);
+            cursor: pointer;
+            transition: all 0.15s;
         }
 
-        /* Footer */
-        .quiet-footer {
-            margin-top: 36px;
-            text-align: center;
-            font-size: 0.74rem;
-            color: var(--text-low);
+        .btn-ctl:hover, .btn-ctl.active {
+            color: var(--text-primary);
+            border-color: var(--accent-ember);
+            background: rgba(224, 96, 48, 0.15);
+        }
+
+        /* CARD SECTIONS */
+        .section-card {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-subtle);
+            border-radius: 12px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .section-heading {
+            font-size: 11px;
+            font-family: var(--font-mono);
+            text-transform: uppercase;
+            letter-spacing: 0.14em;
+            color: var(--text-tertiary);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        /* KEY TAKEAWAYS */
+        .takeaways-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .takeaways-list li {
+            font-size: 14px;
+            line-height: 1.55;
+            color: var(--text-secondary);
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+        }
+
+        .point-num {
+            font-family: var(--font-mono);
+            font-size: 12px;
+            color: var(--accent-ember);
+            font-weight: 600;
+            padding-top: 2px;
+            min-width: 18px;
+        }
+
+        /* ACTION KIT SYNERGY BOX */
+        .action-kit-box {
+            background: linear-gradient(180deg, rgba(24, 29, 38, 0.8) 0%, rgba(18, 21, 28, 1) 100%);
+            border: 1px solid var(--border-highlight);
+            border-radius: 10px;
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .kit-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-family: var(--font-mono);
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--accent-flame);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .kit-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .kit-desc {
+            font-size: 13px;
+            color: var(--text-secondary);
             line-height: 1.5;
+        }
+
+        .kit-actions {
+            display: flex;
+            gap: 8px;
+            margin-top: 4px;
+        }
+
+        .kit-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 14px;
+            border-radius: 6px;
+            background: var(--accent-ember);
+            color: #fff;
+            text-decoration: none;
+            font-size: 12px;
+            font-weight: 600;
+            transition: opacity 0.2s;
+        }
+
+        .kit-link:hover {
+            opacity: 0.9;
+        }
+
+        /* INTERACTIVE CHECKLIST REFLECTION */
+        .check-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 10px 12px;
+            background: var(--bg-elevated);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: 1px solid transparent;
+        }
+
+        .check-item:hover {
+            border-color: var(--border-highlight);
+        }
+
+        .check-item.checked {
+            border-color: rgba(34, 197, 94, 0.4);
+            background: rgba(34, 197, 94, 0.06);
+        }
+
+        .custom-checkbox {
+            width: 18px;
+            height: 18px;
+            border-radius: 4px;
+            border: 2px solid var(--text-tertiary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 2px;
+            flex-shrink: 0;
+            transition: all 0.2s;
+        }
+
+        .check-item.checked .custom-checkbox {
+            background: var(--status-success);
+            border-color: var(--status-success);
+        }
+
+        .custom-checkbox svg {
+            display: none;
+            width: 12px;
+            height: 12px;
+            stroke: #fff;
+            stroke-width: 3;
+        }
+
+        .check-item.checked .custom-checkbox svg {
+            display: block;
+        }
+
+        .check-text {
+            font-size: 13px;
+            line-height: 1.5;
+            color: var(--text-secondary);
+        }
+
+        .check-item.checked .check-text {
+            color: var(--text-primary);
+        }
+
+        /* PRIMARY COMPLETION BUTTON */
+        .btn-complete {
+            width: 100%;
+            padding: 15px;
+            background: var(--accent-ember);
+            color: #ffffff;
+            border: none;
+            border-radius: 10px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 16px rgba(224, 96, 48, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .btn-complete:hover {
+            background: var(--accent-flame);
+            box-shadow: 0 6px 20px rgba(224, 96, 48, 0.45);
+        }
+
+        .btn-complete.done {
+            background: var(--status-success);
+            box-shadow: 0 4px 16px rgba(34, 197, 94, 0.3);
+        }
+
+        /* SIDEBAR DRAWER OVERLAY */
+        .drawer-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.75);
+            backdrop-filter: blur(4px);
+            z-index: 998;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .drawer-overlay.open {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        /* SIDEBAR DRAWER */
+        .sidebar-drawer {
+            position: fixed;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            width: 90%;
+            max-width: 440px;
+            background: var(--bg-surface);
+            border-left: 1px solid var(--border-highlight);
+            z-index: 999;
+            transform: translateX(100%);
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            display: flex;
+            flex-direction: column;
+            box-shadow: -10px 0 30px rgba(0, 0, 0, 0.8);
+        }
+
+        .sidebar-drawer.open {
+            transform: translateX(0);
+        }
+
+        .drawer-header {
+            padding: 18px 20px;
+            border-bottom: 1px solid var(--border-subtle);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .drawer-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .drawer-close {
+            background: transparent;
+            border: none;
+            color: var(--text-tertiary);
+            font-size: 20px;
+            cursor: pointer;
+            padding: 4px;
+        }
+
+        .drawer-close:hover {
+            color: var(--text-primary);
+        }
+
+        /* PROGRESS OVERVIEW IN DRAWER */
+        .drawer-progress-box {
+            padding: 16px 20px;
+            background: var(--bg-elevated);
+            border-bottom: 1px solid var(--border-subtle);
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .progress-stats-row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 12px;
+            font-family: var(--font-mono);
+            color: var(--text-secondary);
+        }
+
+        .progress-bar-bg {
+            width: 100%;
+            height: 6px;
+            background: var(--bg-base);
+            border-radius: 99px;
+            overflow: hidden;
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            width: 1%;
+            background: linear-gradient(90deg, var(--accent-ember), var(--flame-gold));
+            border-radius: 99px;
+            transition: width 0.3s ease;
+        }
+
+        /* DRAWER CONTENT (CURRICULUM TREE) */
+        .drawer-content {
+            flex: 1;
+            overflow-y: auto;
+            padding: 16px 20px 40px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .phase-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .phase-header {
+            font-size: 11px;
+            font-family: var(--font-mono);
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--accent-ember);
+            font-weight: 700;
+            padding-bottom: 4px;
+            border-bottom: 1px dashed var(--border-subtle);
+        }
+
+        .module-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 12px;
+            background: var(--bg-elevated);
+            border: 1px solid var(--border-subtle);
+            border-radius: 8px;
+            gap: 10px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .module-item:hover {
+            border-color: var(--border-highlight);
+        }
+
+        .module-item.active {
+            border-color: var(--accent-ember);
+            background: rgba(224, 96, 48, 0.1);
+        }
+
+        .module-item.completed {
+            border-color: rgba(34, 197, 94, 0.4);
+        }
+
+        .module-info {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+            min-width: 0;
+        }
+
+        .module-name {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text-primary);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .module-meta {
+            font-size: 11px;
+            font-family: var(--font-mono);
+            color: var(--text-tertiary);
+        }
+
+        .module-check-badge {
+            width: 22px;
+            height: 22px;
+            border-radius: 6px;
+            border: 1.5px solid var(--border-highlight);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            transition: all 0.2s;
+        }
+
+        .module-item.completed .module-check-badge {
+            background: var(--status-success);
+            border-color: var(--status-success);
+        }
+
+        .module-check-badge svg {
+            display: none;
+            width: 12px;
+            height: 12px;
+            stroke: #fff;
+            stroke-width: 3;
+        }
+
+        .module-item.completed .module-check-badge svg {
+            display: block;
+        }
+
+        /* CELEBRATION STREAK MODAL */
+        .streak-modal {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.9);
+            background: var(--bg-surface);
+            border: 1px solid var(--flame-gold);
+            border-radius: 16px;
+            padding: 24px;
+            width: 90%;
+            max-width: 340px;
+            text-align: center;
+            z-index: 1001;
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 0 0 50px rgba(255, 120, 68, 0.3);
+        }
+
+        .streak-modal.show {
+            opacity: 1;
+            pointer-events: auto;
+            transform: translate(-50%, -50%) scale(1);
+        }
+
+        .flame-big-icon {
+            width: 56px;
+            height: 56px;
+            fill: var(--accent-flame);
+            filter: drop-shadow(0 0 16px rgba(255, 176, 32, 0.7));
+            margin-bottom: 12px;
+            animation: flame-pulse 1.5s infinite;
+        }
+
+        .streak-modal h3 {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 6px;
+            color: #fff;
+        }
+
+        .streak-modal p {
+            font-size: 13px;
+            color: var(--text-secondary);
+            line-height: 1.5;
+            margin-bottom: 18px;
+        }
+
+        .btn-modal-close {
+            padding: 10px 20px;
+            background: var(--accent-ember);
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
         }
     </style>
 </head>
 <body>
-    <main class="hub-shell">
-        <nav class="top-meta" aria-label="Status Sesi">
-            <div class="module-badge">
-                <span class="ember-indicator" aria-hidden="true"></span>
-                <span>Fokus Pembelajaran Mandiri</span>
-            </div>
-            <time class="calendar-tag" id="displayDate"></time>
-        </nav>
 
-        <section class="viewport-wrapper" aria-label="Pemutar Materi Utama">
-            <video id="coreVideo" controls playsinline webkit-playsinline preload="metadata">
-                <source src="today.mp4" type="video/mp4">
-                Browser tidak mendukung pemutaran video.
-            </video>
-        </section>
-
-        <nav class="playback-controls" aria-label="Kontrol Pemutaran">
-            <div class="speed-switch-group">
-                <button type="button" class="speed-btn active" onclick="setSpeed(1.0, this)">1.0x</button>
-                <button type="button" class="speed-btn" onclick="setSpeed(1.25, this)">1.25x</button>
-                <button type="button" class="speed-btn" onclick="setSpeed(1.5, this)">1.5x</button>
+    <div class="container">
+        <!-- TOP NAVIGATION BAR -->
+        <header class="top-bar">
+            <div class="meta-brand">
+                <span class="meta-label">Materi Harian</span>
+                <span class="meta-user">Rido Azimi</span>
             </div>
-            <div class="speed-switch-group">
-                <button type="button" class="skip-btn" onclick="skipTime(-10)">-10s</button>
-                <button type="button" class="skip-btn" onclick="skipTime(10)">+10s</button>
-            </div>
-        </nav>
 
-        <header class="content-brief">
-            <p class="topic-classification">Servo Mechanism Advanced • Modul Katarsis</p>
-            <h1 class="headline-title">18. Bakar</h1>
-            <p class="concept-statement">
-                Pembersihan total memori emosional dan trauma masa lalu agar sistem autopilot bawah sadar berhenti menyabotase langkah baru, membuka jalan bagi terciptanya relasi tim yang sehat.
-            </p>
+            <div class="top-actions">
+                <!-- DUOLINGO STYLE FIRE STREAK BADGE -->
+                <div class="streak-badge" id="streakBadge" title="Klik untuk cek status streak belajar!">
+                    <svg class="streak-flame-icon" viewBox="0 0 24 24">
+                        <path d="M12 23c-4.97 0-9-4.03-9-9 0-4.13 2.82-7.61 6.72-8.66.42-.11.83.18.89.6.04.33-.12.65-.4.81-1.39.81-2.21 2.29-2.21 3.93 0 1.25.5 2.45 1.39 3.32.2.2.51.24.75.1.25-.15.36-.45.28-.73-.25-.87-.13-1.8.34-2.58.74-1.22 2.05-2.02 3.49-2.13.43-.03.8.27.85.7.07.56.09 1.13.06 1.7-.06 1.19-.52 2.31-1.31 3.16-.2.22-.22.55-.05.8.17.25.49.33.76.2 1.63-.82 2.72-2.48 2.76-4.32.02-.92-.22-1.82-.7-2.6-.23-.37-.09-.85.28-1.07.36-.22.84-.09 1.07.28C19.26 8.35 20 10.38 20 12.5c0 5.8-4.7 10.5-10.5 10.5h2.5z"/>
+                    </svg>
+                    <span id="streakCount">0</span>
+                </div>
+
+                <!-- ALL CURRICULUM DRAWER BUTTON -->
+                <button class="sidebar-btn" id="openDrawerBtn">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="8" y1="6" x2="21" y2="6"></line>
+                        <line x1="8" y1="12" x2="21" y2="12"></line>
+                        <line x1="8" y1="18" x2="21" y2="18"></line>
+                        <line x1="3" y1="6" x2="3.01" y2="6"></line>
+                        <line x1="3" y1="12" x2="3.01" y2="12"></line>
+                        <line x1="3" y1="18" x2="3.01" y2="18"></line>
+                    </svg>
+                    Semua Materi
+                </button>
+            </div>
         </header>
 
-        <section class="pillar-stack" aria-label="Pilar Materi">
-            <article class="pillar-card">
-                <div class="pillar-index">01</div>
-                <div class="pillar-body">
-                    <h3>Katarsis dan Penghentian Sabotase Bawah Sadar</h3>
-                    <p>Beban emosional yang belum tuntas akan terus menjadi rem tak kasat mata. Teknik bakar berfungsi memutus rantai dendam, rasa bersalah, dan kegagalan lama secara sadar.</p>
-                </div>
-            </article>
-
-            <article class="pillar-card">
-                <div class="pillar-index">02</div>
-                <div class="pillar-body">
-                    <h3>Pembersihan Saluran Relasi Inti</h3>
-                    <p>Konflik internal selalu terpantul ke luar. Menyelesaikan persoalan batin dengan keluarga, kawan dekat, dan mitra kerja adalah kunci agar energi harian tidak bocor.</p>
-                </div>
-            </article>
-
-            <article class="pillar-card">
-                <div class="pillar-index">03</div>
-                <div class="pillar-body">
-                    <h3>Pondasi Kepercayaan Tim yang Utuh</h3>
-                    <p>Kepercayaan tim mustahil dibangun di atas fondasi individu yang masih defensif. Rasa aman bersama hanya muncul saat masing-masing orang berani menanggalkan ego pribadinya.</p>
-                </div>
-            </article>
+        <!-- CURRENT LESSON HEADER -->
+        <section class="header-block">
+            <span class="category-tag">Fase 1: Mindset & Subconscious • Modul 18</span>
+            <h1 class="lesson-title">18. Bakar</h1>
+            <p class="lesson-desc">
+                Teknik katarsis mental: membakar trauma, keraguan, dan memutus beban masa lalu agar frekuensi bawah sadar sejajar dengan target bisnis masa kini.
+            </p>
         </section>
 
-        <section class="action-container" aria-label="Pencatatan Komitmen Harian">
-            <h2 class="gate-instruction">Penyelesaian Harian</h2>
-            
-            <label class="checklist-item">
-                <input type="checkbox" id="checkWatch" onchange="syncGateState()">
-                <span class="checklist-label">Saya telah menyimak materi ini dari awal hingga tuntas</span>
-            </label>
+        <!-- NATIVE VIDEO PLAYER (16:9 RAW CONTAINER) -->
+        <div class="video-wrapper">
+            <video id="mainVideo" playsinline controls preload="metadata" poster="">
+                <source src="today.mp4" type="video/mp4">
+                Browser tidak mendukung tag video.
+            </video>
+        </div>
 
-            <label class="checklist-item">
-                <input type="checkbox" id="checkReflect" onchange="syncGateState()">
-                <span class="checklist-label">Saya telah menentukan satu hal masa lalu yang saya bakar dan lepaskan hari ini</span>
-            </label>
+        <!-- QUICK CONTROLS -->
+        <div class="controls-row">
+            <div class="control-group">
+                <button class="btn-ctl" onclick="jumpVideo(-10)">-10s</button>
+                <button class="btn-ctl" onclick="jumpVideo(10)">+10s</button>
+            </div>
+            <div class="control-group">
+                <button class="btn-ctl active" onclick="setSpeed(1.0, this)">1.0x</button>
+                <button class="btn-ctl" onclick="setSpeed(1.25, this)">1.25x</button>
+                <button class="btn-ctl" onclick="setSpeed(1.5, this)">1.5x</button>
+            </div>
+        </div>
 
-            <button type="button" class="commit-button" id="submitAction" onclick="finalizeDailySession()">
-                Tandai Selesai dan Simpan Progres
-            </button>
+        <!-- ACTION KIT HARIAN (INTEGRASI NON-VIDEO) -->
+        <div class="action-kit-box">
+            <div class="kit-badge">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                    <polyline points="14 2 14 8 20 8"></polyline>
+                    <line x1="16" y1="13" x2="8" y2="13"></line>
+                    <line x1="16" y1="17" x2="8" y2="17"></line>
+                </svg>
+                Action Kit Harian (Template & Dokumen)
+            </div>
+            <div class="kit-title">Lembar Kerja Katarsis & Pembersihan Hambatan Mental Bisnis</div>
+            <div class="kit-desc">
+                Panduan praktis menuliskan 3 hambatan terbesar, membakar secara simbolik, dan merestrukturisasi kepercayaan baru untuk Dorizz Store & Doripay.
+            </div>
+            <div class="kit-actions">
+                <a href="https://drive.google.com/drive/folders/1bqME7PNLFuFSxJgwEa9es5x-T6uWJYfV" target="_blank" class="kit-link">
+                    Buka Folder Materi Drive
+                </a>
+            </div>
+        </div>
+
+        <!-- KEY TAKEAWAYS -->
+        <section class="section-card">
+            <div class="section-heading">
+                <span>Intisari Modul</span>
+                <span>Refleksi</span>
+            </div>
+            <ul class="takeaways-list">
+                <li>
+                    <span class="point-num">01</span>
+                    <span><strong>Katarsis Bawah Sadar:</strong> Bawah sadar tidak bisa diisi program kekayaan baru jika memori kegagalan masa lalu belum dilepaskan secara sadar.</span>
+                </li>
+                <li>
+                    <span class="point-num">02</span>
+                    <span><strong>Putus Rem Mental:</strong> Setiap keraguan pada saat eksekusi adalah rem tangan yang membakar energi tanpa menghasilkan laju bisnis.</span>
+                </li>
+                <li>
+                    <span class="point-num">03</span>
+                    <span><strong>Keberanian Membakar Jembatan:</strong> Jangan sisakan ruang untuk menyerah atau kembali ke pola lama yang tidak menghasilkan.</span>
+                </li>
+            </ul>
         </section>
 
-        <footer class="quiet-footer">
-            <p>Satu materi terpilih per hari. Konsistensi kecil yang dirawat menghasilkan pergeseran besar.</p>
-        </footer>
-    </main>
+        <!-- CHECKLIST REFLEKSI DIRI -->
+        <section class="section-card">
+            <div class="section-heading">
+                <span>Komitmen Tindakan Hari Ini</span>
+                <span>Pribadi</span>
+            </div>
+            <div class="check-item" onclick="toggleCheck(this, 'task1')">
+                <div class="custom-checkbox">
+                    <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                </div>
+                <div class="check-text">
+                    Saya sudah menyimak video materi 18. Bakar sampai tuntas dan menangkap pesan intinya.
+                </div>
+            </div>
+            <div class="check-item" onclick="toggleCheck(this, 'task2')">
+                <div class="custom-checkbox">
+                    <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                </div>
+                <div class="check-text">
+                    Saya telah mengidentifikasi 1 keraguan terbesar dalam bisnis dan siap mengeksekusinya tanpa ragu.
+                </div>
+            </div>
+        </section>
+
+        <!-- SELESAIKAN MATERI & TRIGGER STREAK -->
+        <button class="btn-complete" id="completeBtn" onclick="markLessonComplete()">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+            Tandai Selesai & Nyalakan Api Belajar
+        </button>
+    </div>
+
+    <!-- SIDEBAR DRAWER (SEMUA MATERI & CHECKLIST OTOMATIS) -->
+    <div class="drawer-overlay" id="drawerOverlay" onclick="closeDrawer()"></div>
+    <div class="sidebar-drawer" id="sidebarDrawer">
+        <div class="drawer-header">
+            <div class="drawer-title">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="8" y1="6" x2="21" y2="6"></line>
+                    <line x1="8" y1="12" x2="21" y2="12"></line>
+                    <line x1="8" y1="18" x2="21" y2="18"></line>
+                </svg>
+                Daftar Semua Materi
+            </div>
+            <button class="drawer-close" onclick="closeDrawer()">&times;</button>
+        </div>
+
+        <div class="drawer-progress-box">
+            <div class="progress-stats-row">
+                <span>Total Kemajuan</span>
+                <span id="progressPercent">0% (0 / 92 Modul)</span>
+            </div>
+            <div class="progress-bar-bg">
+                <div class="progress-bar-fill" id="progressBar"></div>
+            </div>
+        </div>
+
+        <div class="drawer-content" id="drawerModulesList">
+            <!-- Dynamically loaded from curriculum.json -->
+            <div style="text-align: center; color: var(--text-tertiary); font-size: 13px; padding: 20px;">
+                Memuat kurikulum lengkap...
+            </div>
+        </div>
+    </div>
+
+    <!-- DUOLINGO STREAK POPUP MODAL -->
+    <div class="streak-modal" id="streakModal">
+        <svg class="flame-big-icon" viewBox="0 0 24 24">
+            <path d="M12 23c-4.97 0-9-4.03-9-9 0-4.13 2.82-7.61 6.72-8.66.42-.11.83.18.89.6.04.33-.12.65-.4.81-1.39.81-2.21 2.29-2.21 3.93 0 1.25.5 2.45 1.39 3.32.2.2.51.24.75.1.25-.15.36-.45.28-.73-.25-.87-.13-1.8.34-2.58.74-1.22 2.05-2.02 3.49-2.13.43-.03.8.27.85.7.07.56.09 1.13.06 1.7-.06 1.19-.52 2.31-1.31 3.16-.2.22-.22.55-.05.8.17.25.49.33.76.2 1.63-.82 2.72-2.48 2.76-4.32.02-.92-.22-1.82-.7-2.6-.23-.37-.09-.85.28-1.07.36-.22.84-.09 1.07.28C19.26 8.35 20 10.38 20 12.5c0 5.8-4.7 10.5-10.5 10.5h2.5z"/>
+        </svg>
+        <h3 id="modalStreakTitle">Api Belajar Menyala!</h3>
+        <p id="modalStreakDesc">
+            Selamat Bang Rido! Anda berhasil menyelesaikan materi hari ini. Pertahankan api streak ini menyala setiap hari!
+        </p>
+        <button class="btn-modal-close" onclick="closeStreakModal()">Lanjutkan</button>
+    </div>
 
     <script>
-        const dateOptions = { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' };
-        document.getElementById('displayDate').textContent = new Intl.DateTimeFormat('id-ID', dateOptions).format(new Date());
+        const video = document.getElementById('mainVideo');
+        const CURRENT_LESSON_ID = 'mod_18_bakar';
+        let curriculumData = [];
 
-        const video = document.getElementById('coreVideo');
-        const checkWatch = document.getElementById('checkWatch');
-        const checkReflect = document.getElementById('checkReflect');
-        const submitBtn = document.getElementById('submitAction');
-        const dayKey = 'bakar_complete_' + new Date().toISOString().slice(0, 10);
-
-        function setSpeed(rate, element) {
-            if (video) video.playbackRate = rate;
-            document.querySelectorAll('.speed-btn').forEach(btn => btn.classList.remove('active'));
-            element.classList.add('active');
-        }
-
-        function skipTime(seconds) {
-            if (video) video.currentTime = Math.max(0, Math.min(video.duration || 0, video.currentTime + seconds));
-        }
-
-        function syncGateState() {
-            if (localStorage.getItem(dayKey) === 'done') return;
-            const bothChecked = checkWatch.checked && checkReflect.checked;
-            submitBtn.style.opacity = bothChecked ? '1' : '0.75';
-        }
-
-        function finalizeDailySession() {
-            const isDone = localStorage.getItem(dayKey) === 'done';
-            if (isDone) {
-                localStorage.removeItem(dayKey);
-                checkWatch.checked = false;
-                checkReflect.checked = false;
-                submitBtn.classList.remove('complete-state');
-                submitBtn.textContent = 'Tandai Selesai dan Simpan Progres';
-                submitBtn.style.opacity = '0.75';
-            } else {
-                localStorage.setItem(dayKey, 'done');
-                checkWatch.checked = true;
-                checkReflect.checked = true;
-                submitBtn.classList.add('complete-state');
-                submitBtn.textContent = 'Sesi Hari Ini Selesai Dipelajari';
-                submitBtn.style.opacity = '1';
+        // LOAD LOCAL STORAGE STATE
+        function getStorage() {
+            try {
+                return JSON.parse(localStorage.getItem('rido_study_hub') || '{}');
+            } catch(e) {
+                return {};
             }
         }
 
-        // Restore state on load
-        if (localStorage.getItem(dayKey) === 'done') {
-            checkWatch.checked = true;
-            checkReflect.checked = true;
-            submitBtn.classList.add('complete-state');
-            submitBtn.textContent = 'Sesi Hari Ini Selesai Dipelajari';
-        } else {
-            syncGateState();
+        function saveStorage(data) {
+            localStorage.setItem('rido_study_hub', JSON.stringify(data));
         }
+
+        // INIT STREAK & PROGRESS
+        function initApp() {
+            const state = getStorage();
+            if (!state.completedModules) state.completedModules = {};
+            if (!state.streak) state.streak = 0;
+            if (!state.lastDate) state.lastDate = '';
+
+            updateStreakDisplay(state);
+            loadCurriculum();
+
+            // Check if current lesson is completed
+            if (state.completedModules[CURRENT_LESSON_ID]) {
+                setCompletedButtonState(true);
+            }
+
+            // Restore checklist items
+            ['task1', 'task2'].forEach(taskId => {
+                if (state['check_' + taskId]) {
+                    const el = document.querySelector(`[onclick*="${taskId}"]`);
+                    if (el) el.classList.add('checked');
+                }
+            });
+
+            // Auto-check video completion when ended
+            video.addEventListener('ended', () => {
+                const s = getStorage();
+                if (!s.completedModules[CURRENT_LESSON_ID]) {
+                    markLessonComplete(true);
+                }
+            });
+        }
+
+        // UPDATE STREAK BADGE
+        function updateStreakDisplay(state) {
+            const badge = document.getElementById('streakBadge');
+            const count = document.getElementById('streakCount');
+            const streak = state.streak || 0;
+            count.textContent = streak;
+
+            if (streak > 0) {
+                badge.classList.add('ignited');
+            } else {
+                badge.classList.remove('ignited');
+            }
+        }
+
+        // SET COMPLETED BUTTON STATE
+        function setCompletedButtonState(isDone) {
+            const btn = document.getElementById('completeBtn');
+            if (isDone) {
+                btn.classList.add('done');
+                btn.innerHTML = `
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                    Selesai Dipelajari (Api Menyala)
+                `;
+            } else {
+                btn.classList.remove('done');
+                btn.innerHTML = `
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                    Tandai Selesai & Nyalakan Api Belajar
+                `;
+            }
+        }
+
+        // MARK LESSON COMPLETE
+        function markLessonComplete(autoByVideo = false) {
+            const state = getStorage();
+            if (!state.completedModules) state.completedModules = {};
+
+            const todayStr = new Date().toISOString().split('T')[0];
+            const isAlreadyDone = !!state.completedModules[CURRENT_LESSON_ID];
+
+            state.completedModules[CURRENT_LESSON_ID] = true;
+
+            // Handle Duolingo flame streak calculation
+            if (state.lastDate !== todayStr) {
+                // If yesterday was last date, increment streak, else reset to 1
+                const yesterday = new Date();
+                yesterday.setDate(yesterday.getDate() - 1);
+                const yesterdayStr = yesterday.toISOString().split('T')[0];
+
+                if (state.lastDate === yesterdayStr) {
+                    state.streak = (state.streak || 0) + 1;
+                } else {
+                    state.streak = 1;
+                }
+                state.lastDate = todayStr;
+            }
+
+            saveStorage(state);
+            updateStreakDisplay(state);
+            setCompletedButtonState(true);
+            updateCurriculumUI();
+
+            // Show celebration modal
+            showStreakModal(state.streak, autoByVideo);
+        }
+
+        // STREAK MODAL
+        function showStreakModal(streakCount, autoByVideo) {
+            const modal = document.getElementById('streakModal');
+            const title = document.getElementById('modalStreakTitle');
+            const desc = document.getElementById('modalStreakDesc');
+
+            title.textContent = `Api Belajar Hari ke-${streakCount}! 🔥`;
+            desc.textContent = autoByVideo 
+                ? `Video selesai ditonton penuh! Modul 18. Bakar otomatis tercentang dan api belajarmu tetap berkobar!`
+                : `Luar biasa Bang Rido! Modul 18. Bakar resmi selesai dipelajari. Satu langkah konsisten menuju penguasaan penuh!`;
+
+            modal.classList.add('show');
+        }
+
+        function closeStreakModal() {
+            document.getElementById('streakModal').classList.remove('show');
+        }
+
+        // CHECKLIST TOGGLE
+        function toggleCheck(element, taskId) {
+            element.classList.toggle('checked');
+            const state = getStorage();
+            state['check_' + taskId] = element.classList.contains('checked');
+            saveStorage(state);
+        }
+
+        // CONTROLS SPEED & TIME
+        function setSpeed(speed, btn) {
+            video.playbackRate = speed;
+            document.querySelectorAll('.control-group .btn-ctl').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+        }
+
+        function jumpVideo(sec) {
+            video.currentTime = Math.max(0, video.currentTime + sec);
+        }
+
+        // DRAWER CONTROLS
+        const overlay = document.getElementById('drawerOverlay');
+        const drawer = document.getElementById('sidebarDrawer');
+
+        document.getElementById('openDrawerBtn').onclick = () => {
+            overlay.classList.add('open');
+            drawer.classList.add('open');
+        };
+
+        function closeDrawer() {
+            overlay.classList.remove('open');
+            drawer.classList.remove('open');
+        }
+
+        // LOAD CURRICULUM DATA
+        async function loadCurriculum() {
+            try {
+                const res = await fetch('curriculum.json');
+                curriculumData = await res.json();
+                renderCurriculum(curriculumData);
+            } catch (err) {
+                console.error('Failed to load curriculum', err);
+            }
+        }
+
+        function renderCurriculum(data) {
+            const container = document.getElementById('drawerModulesList');
+            container.innerHTML = '';
+
+            const state = getStorage();
+            const completed = state.completedModules || {};
+
+            // Group by phase
+            const phases = {};
+            data.forEach(item => {
+                if (!phases[item.phase_title]) phases[item.phase_title] = [];
+                phases[item.phase_title].push(item);
+            });
+
+            let totalCompletedCount = 0;
+
+            for (const [phaseTitle, modules] of Object.entries(phases)) {
+                const phaseEl = document.createElement('div');
+                phaseEl.className = 'phase-group';
+
+                const header = document.createElement('div');
+                header.className = 'phase-header';
+                header.textContent = phaseTitle;
+                phaseEl.appendChild(header);
+
+                modules.forEach(mod => {
+                    // special check for current module
+                    const isModCompleted = (mod.id === 'mod_1' || mod.title.includes('Bakar')) 
+                        ? !!completed[CURRENT_LESSON_ID] 
+                        : !!completed[mod.id];
+
+                    if (isModCompleted) totalCompletedCount++;
+
+                    const modEl = document.createElement('div');
+                    modEl.className = `module-item ${isModCompleted ? 'completed' : ''} ${mod.title.includes('Bakar') ? 'active' : ''}`;
+                    modEl.onclick = () => toggleModuleComplete(mod.id, modEl);
+
+                    modEl.innerHTML = `
+                        <div class="module-info">
+                            <span class="module-name">${mod.title}</span>
+                            <span class="module-meta">${mod.videos} video • ${mod.duration_min}m • ${mod.docs} docs</span>
+                        </div>
+                        <div class="module-check-badge">
+                            <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        </div>
+                    `;
+                    phaseEl.appendChild(modEl);
+                });
+
+                container.appendChild(phaseEl);
+            }
+
+            // Update Progress Bar
+            const total = data.length || 92;
+            const pct = Math.round((totalCompletedCount / total) * 100);
+            document.getElementById('progressBar').style.width = pct + '%';
+            document.getElementById('progressPercent').textContent = `${pct}% (${totalCompletedCount} / ${total} Modul)`;
+        }
+
+        function toggleModuleComplete(modId, el) {
+            const state = getStorage();
+            if (!state.completedModules) state.completedModules = {};
+
+            const isDone = !state.completedModules[modId];
+            state.completedModules[modId] = isDone;
+
+            if (modId === CURRENT_LESSON_ID || modId === 'mod_1') {
+                state.completedModules[CURRENT_LESSON_ID] = isDone;
+                setCompletedButtonState(isDone);
+            }
+
+            saveStorage(state);
+            updateCurriculumUI();
+        }
+
+        function updateCurriculumUI() {
+            if (curriculumData.length > 0) {
+                renderCurriculum(curriculumData);
+            }
+        }
+
+        // Start
+        window.addEventListener('DOMContentLoaded', initApp);
     </script>
 </body>
 </html>
