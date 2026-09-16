@@ -18,7 +18,6 @@
             --text-secondary: #9aa5b8;
             --text-tertiary: #5d677a;
             --accent-ember: #e06030;
-            --accent-ember-dark: #b84318;
             --accent-flame: #ff7844;
             --flame-gold: #ffb020;
             --status-success: #22c55e;
@@ -54,7 +53,7 @@
             gap: 20px;
         }
 
-        /* TOP NAVIGATION & DUOLINGO FLAME STREAK */
+        /* TOP NAVIGATION */
         .top-bar {
             display: flex;
             align-items: center;
@@ -106,10 +105,6 @@
             cursor: pointer;
             transition: all 0.2s ease;
             box-shadow: 0 0 16px rgba(224, 96, 48, 0.15);
-        }
-
-        .streak-badge:active {
-            transform: scale(0.96);
         }
 
         .streak-badge.ignited {
@@ -348,95 +343,48 @@
             opacity: 0.9;
         }
 
-        /* INTERACTIVE CHECKLIST REFLECTION */
-        .check-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 12px;
-            padding: 10px 12px;
-            background: var(--bg-elevated);
-            border-radius: 8px;
-            cursor: pointer;
-            transition: all 0.2s;
-            border: 1px solid transparent;
-        }
-
-        .check-item:hover {
-            border-color: var(--border-highlight);
-        }
-
-        .check-item.checked {
-            border-color: rgba(34, 197, 94, 0.4);
-            background: rgba(34, 197, 94, 0.06);
-        }
-
-        .custom-checkbox {
-            width: 18px;
-            height: 18px;
-            border-radius: 4px;
-            border: 2px solid var(--text-tertiary);
+        /* AUTOMATIC COMPLETION NOTICE */
+        .auto-lock-banner {
             display: flex;
             align-items: center;
-            justify-content: center;
-            margin-top: 2px;
-            flex-shrink: 0;
-            transition: all 0.2s;
-        }
-
-        .check-item.checked .custom-checkbox {
-            background: var(--status-success);
-            border-color: var(--status-success);
-        }
-
-        .custom-checkbox svg {
-            display: none;
-            width: 12px;
-            height: 12px;
-            stroke: #fff;
-            stroke-width: 3;
-        }
-
-        .check-item.checked .custom-checkbox svg {
-            display: block;
-        }
-
-        .check-text {
-            font-size: 13px;
-            line-height: 1.5;
+            gap: 10px;
+            padding: 12px 14px;
+            background: rgba(224, 96, 48, 0.08);
+            border: 1px dashed rgba(224, 96, 48, 0.3);
+            border-radius: 8px;
+            font-size: 12px;
+            line-height: 1.45;
             color: var(--text-secondary);
         }
 
-        .check-item.checked .check-text {
-            color: var(--text-primary);
+        .auto-lock-icon {
+            color: var(--accent-flame);
+            flex-shrink: 0;
         }
 
-        /* PRIMARY COMPLETION BUTTON */
+        /* STATUS BADGE */
         .btn-complete {
             width: 100%;
             padding: 15px;
-            background: var(--accent-ember);
-            color: #ffffff;
-            border: none;
+            background: var(--bg-elevated);
+            color: var(--text-tertiary);
+            border: 1px solid var(--border-subtle);
             border-radius: 10px;
-            font-size: 15px;
+            font-size: 14px;
             font-weight: 600;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            box-shadow: 0 4px 16px rgba(224, 96, 48, 0.3);
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 10px;
-        }
-
-        .btn-complete:hover {
-            background: var(--accent-flame);
-            box-shadow: 0 6px 20px rgba(224, 96, 48, 0.45);
+            cursor: default;
+            user-select: none;
         }
 
         .btn-complete.done {
-            background: var(--status-success);
-            box-shadow: 0 4px 16px rgba(34, 197, 94, 0.3);
+            background: rgba(34, 197, 94, 0.15);
+            border-color: rgba(34, 197, 94, 0.4);
+            color: var(--status-success);
+            box-shadow: 0 4px 16px rgba(34, 197, 94, 0.2);
         }
 
         /* SIDEBAR DRAWER OVERLAY */
@@ -465,8 +413,8 @@
             top: 0;
             right: 0;
             bottom: 0;
-            width: 90%;
-            max-width: 440px;
+            width: 92%;
+            max-width: 450px;
             background: var(--bg-surface);
             border-left: 1px solid var(--border-highlight);
             z-index: 999;
@@ -482,7 +430,7 @@
         }
 
         .drawer-header {
-            padding: 18px 20px;
+            padding: 16px 20px;
             border-bottom: 1px solid var(--border-subtle);
             display: flex;
             align-items: center;
@@ -490,7 +438,7 @@
         }
 
         .drawer-title {
-            font-size: 16px;
+            font-size: 15px;
             font-weight: 700;
             color: var(--text-primary);
             display: flex;
@@ -502,7 +450,7 @@
             background: transparent;
             border: none;
             color: var(--text-tertiary);
-            font-size: 20px;
+            font-size: 22px;
             cursor: pointer;
             padding: 4px;
         }
@@ -511,9 +459,9 @@
             color: var(--text-primary);
         }
 
-        /* PROGRESS OVERVIEW IN DRAWER */
+        /* PROGRESS OVERVIEW */
         .drawer-progress-box {
-            padding: 16px 20px;
+            padding: 14px 20px;
             background: var(--bg-elevated);
             border-bottom: 1px solid var(--border-subtle);
             display: flex;
@@ -545,20 +493,43 @@
             transition: width 0.3s ease;
         }
 
-        /* DRAWER CONTENT (CURRICULUM TREE) */
+        /* SEARCH / FILTER */
+        .drawer-search-box {
+            padding: 10px 20px;
+            border-bottom: 1px solid var(--border-subtle);
+            background: var(--bg-surface);
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 8px 12px;
+            background: var(--bg-base);
+            border: 1px solid var(--border-subtle);
+            border-radius: 6px;
+            color: var(--text-primary);
+            font-size: 12px;
+            outline: none;
+            font-family: var(--font-sans);
+        }
+
+        .search-input:focus {
+            border-color: var(--accent-ember);
+        }
+
+        /* DRAWER CONTENT (DETAILED VIDEO TREE) */
         .drawer-content {
             flex: 1;
             overflow-y: auto;
-            padding: 16px 20px 40px;
+            padding: 14px 18px 40px;
             display: flex;
             flex-direction: column;
-            gap: 20px;
+            gap: 16px;
         }
 
         .phase-group {
             display: flex;
             flex-direction: column;
-            gap: 10px;
+            gap: 8px;
         }
 
         .phase-header {
@@ -572,57 +543,58 @@
             border-bottom: 1px dashed var(--border-subtle);
         }
 
-        .module-item {
+        /* MODULE LESSON ITEM (READ-ONLY AUTO-CHECKLIST) */
+        .lesson-item {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 10px 12px;
+            padding: 9px 12px;
             background: var(--bg-elevated);
             border: 1px solid var(--border-subtle);
             border-radius: 8px;
             gap: 10px;
-            cursor: pointer;
+            user-select: none;
             transition: all 0.2s;
         }
 
-        .module-item:hover {
-            border-color: var(--border-highlight);
-        }
-
-        .module-item.active {
+        .lesson-item.active {
             border-color: var(--accent-ember);
-            background: rgba(224, 96, 48, 0.1);
+            background: rgba(224, 96, 48, 0.12);
         }
 
-        .module-item.completed {
+        .lesson-item.completed {
             border-color: rgba(34, 197, 94, 0.4);
+            background: rgba(34, 197, 94, 0.05);
         }
 
-        .module-info {
+        .lesson-info {
             display: flex;
             flex-direction: column;
-            gap: 3px;
+            gap: 2px;
             min-width: 0;
         }
 
-        .module-name {
+        .lesson-name {
             font-size: 13px;
-            font-weight: 600;
+            font-weight: 500;
             color: var(--text-primary);
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
         }
 
-        .module-meta {
-            font-size: 11px;
+        .lesson-folder {
+            font-size: 10px;
             font-family: var(--font-mono);
             color: var(--text-tertiary);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
-        .module-check-badge {
-            width: 22px;
-            height: 22px;
+        .lesson-check-badge {
+            width: 20px;
+            height: 20px;
             border-radius: 6px;
             border: 1.5px solid var(--border-highlight);
             display: flex;
@@ -632,12 +604,12 @@
             transition: all 0.2s;
         }
 
-        .module-item.completed .module-check-badge {
+        .lesson-item.completed .lesson-check-badge {
             background: var(--status-success);
             border-color: var(--status-success);
         }
 
-        .module-check-badge svg {
+        .lesson-check-badge svg {
             display: none;
             width: 12px;
             height: 12px;
@@ -645,7 +617,7 @@
             stroke-width: 3;
         }
 
-        .module-item.completed .module-check-badge svg {
+        .lesson-item.completed .lesson-check-badge svg {
             display: block;
         }
 
@@ -723,7 +695,7 @@
 
             <div class="top-actions">
                 <!-- DUOLINGO STYLE FIRE STREAK BADGE -->
-                <div class="streak-badge" id="streakBadge" title="Klik untuk cek status streak belajar!">
+                <div class="streak-badge" id="streakBadge" title="Status api streak belajar!">
                     <svg class="streak-flame-icon" viewBox="0 0 24 24">
                         <path d="M12 23c-4.97 0-9-4.03-9-9 0-4.13 2.82-7.61 6.72-8.66.42-.11.83.18.89.6.04.33-.12.65-.4.81-1.39.81-2.21 2.29-2.21 3.93 0 1.25.5 2.45 1.39 3.32.2.2.51.24.75.1.25-.15.36-.45.28-.73-.25-.87-.13-1.8.34-2.58.74-1.22 2.05-2.02 3.49-2.13.43-.03.8.27.85.7.07.56.09 1.13.06 1.7-.06 1.19-.52 2.31-1.31 3.16-.2.22-.22.55-.05.8.17.25.49.33.76.2 1.63-.82 2.72-2.48 2.76-4.32.02-.92-.22-1.82-.7-2.6-.23-.37-.09-.85.28-1.07.36-.22.84-.09 1.07.28C19.26 8.35 20 10.38 20 12.5c0 5.8-4.7 10.5-10.5 10.5h2.5z"/>
                     </svg>
@@ -740,7 +712,7 @@
                         <line x1="3" y1="12" x2="3.01" y2="12"></line>
                         <line x1="3" y1="18" x2="3.01" y2="18"></line>
                     </svg>
-                    Semua Materi
+                    Daftar Semua Materi
                 </button>
             </div>
         </header>
@@ -756,7 +728,7 @@
 
         <!-- NATIVE VIDEO PLAYER (16:9 RAW CONTAINER) -->
         <div class="video-wrapper">
-            <video id="mainVideo" playsinline controls preload="metadata" poster="">
+            <video id="mainVideo" playsinline controls preload="metadata">
                 <source src="today.mp4" type="video/mp4">
                 Browser tidak mendukung tag video.
             </video>
@@ -775,7 +747,18 @@
             </div>
         </div>
 
-        <!-- ACTION KIT HARIAN (INTEGRASI NON-VIDEO) -->
+        <!-- AUTO-LOCK COMPLETION NOTICE -->
+        <div class="auto-lock-banner">
+            <svg class="auto-lock-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+            </svg>
+            <span>
+                <strong>Sistem Checklist Otomatis:</strong> Centang materi & api belajar terkunci otomatis dan hanya akan terbuka setelah video ditonton tuntas hingga detik terakhir.
+            </span>
+        </div>
+
+        <!-- ACTION KIT HARIAN -->
         <div class="action-kit-box">
             <div class="kit-badge">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -819,40 +802,18 @@
             </ul>
         </section>
 
-        <!-- CHECKLIST REFLEKSI DIRI -->
-        <section class="section-card">
-            <div class="section-heading">
-                <span>Komitmen Tindakan Hari Ini</span>
-                <span>Pribadi</span>
-            </div>
-            <div class="check-item" onclick="toggleCheck(this, 'task1')">
-                <div class="custom-checkbox">
-                    <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                </div>
-                <div class="check-text">
-                    Saya sudah menyimak video materi 18. Bakar sampai tuntas dan menangkap pesan intinya.
-                </div>
-            </div>
-            <div class="check-item" onclick="toggleCheck(this, 'task2')">
-                <div class="custom-checkbox">
-                    <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                </div>
-                <div class="check-text">
-                    Saya telah mengidentifikasi 1 keraguan terbesar dalam bisnis dan siap mengeksekusinya tanpa ragu.
-                </div>
-            </div>
-        </section>
-
-        <!-- SELESAIKAN MATERI & TRIGGER STREAK -->
-        <button class="btn-complete" id="completeBtn" onclick="markLessonComplete()">
+        <!-- STATUS BUTTON (AUTO-TRIGGERED BY VIDEO) -->
+        <div class="btn-complete" id="completeBtn">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                <polyline points="20 6 9 17 4 12"></polyline>
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="12" y1="8" x2="12" y2="12"></line>
+                <line x1="12" y1="16" x2="12.01" y2="16"></line>
             </svg>
-            Tandai Selesai & Nyalakan Api Belajar
-        </button>
+            <span>Tonton Video Hingga Selesai untuk Menyalakan Api</span>
+        </div>
     </div>
 
-    <!-- SIDEBAR DRAWER (SEMUA MATERI & CHECKLIST OTOMATIS) -->
+    <!-- SIDEBAR DRAWER (DAFTAR RINCI SEMUA 656 MATERI) -->
     <div class="drawer-overlay" id="drawerOverlay" onclick="closeDrawer()"></div>
     <div class="sidebar-drawer" id="sidebarDrawer">
         <div class="drawer-header">
@@ -862,25 +823,28 @@
                     <line x1="8" y1="12" x2="21" y2="12"></line>
                     <line x1="8" y1="18" x2="21" y2="18"></line>
                 </svg>
-                Daftar Semua Materi
+                Daftar Semua Materi (656 Video)
             </div>
             <button class="drawer-close" onclick="closeDrawer()">&times;</button>
         </div>
 
         <div class="drawer-progress-box">
             <div class="progress-stats-row">
-                <span>Total Kemajuan</span>
-                <span id="progressPercent">0% (0 / 92 Modul)</span>
+                <span>Total Selesai Ditonton</span>
+                <span id="progressPercent">0% (0 / 656 Video)</span>
             </div>
             <div class="progress-bar-bg">
                 <div class="progress-bar-fill" id="progressBar"></div>
             </div>
         </div>
 
+        <div class="drawer-search-box">
+            <input type="text" class="search-input" id="searchLessons" placeholder="Cari nama video atau topik..." oninput="filterLessons()">
+        </div>
+
         <div class="drawer-content" id="drawerModulesList">
-            <!-- Dynamically loaded from curriculum.json -->
             <div style="text-align: center; color: var(--text-tertiary); font-size: 13px; padding: 20px;">
-                Memuat kurikulum lengkap...
+                Memuat 656 daftar materi lengkap...
             </div>
         </div>
     </div>
@@ -892,62 +856,50 @@
         </svg>
         <h3 id="modalStreakTitle">Api Belajar Menyala!</h3>
         <p id="modalStreakDesc">
-            Selamat Bang Rido! Anda berhasil menyelesaikan materi hari ini. Pertahankan api streak ini menyala setiap hari!
+            Selamat Bang Rido! Anda telah menonton materi hingga tuntas. Centang otomatis telah ditambahkan dan api streak belajarmu berkobar!
         </p>
         <button class="btn-modal-close" onclick="closeStreakModal()">Lanjutkan</button>
     </div>
 
     <script>
         const video = document.getElementById('mainVideo');
-        const CURRENT_LESSON_ID = 'mod_18_bakar';
-        let curriculumData = [];
+        const CURRENT_LESSON_ID = '1gBTwktXAuxhnDnsS1W-2KmZJqtnlNump'; // ID 18. Bakar.mp4
+        let allLessons = [];
 
-        // LOAD LOCAL STORAGE STATE
         function getStorage() {
             try {
-                return JSON.parse(localStorage.getItem('rido_study_hub') || '{}');
+                return JSON.parse(localStorage.getItem('rido_study_hub_v2') || '{}');
             } catch(e) {
                 return {};
             }
         }
 
         function saveStorage(data) {
-            localStorage.setItem('rido_study_hub', JSON.stringify(data));
+            localStorage.setItem('rido_study_hub_v2', JSON.stringify(data));
         }
 
-        // INIT STREAK & PROGRESS
         function initApp() {
             const state = getStorage();
-            if (!state.completedModules) state.completedModules = {};
+            if (!state.completedLessons) state.completedLessons = {};
             if (!state.streak) state.streak = 0;
             if (!state.lastDate) state.lastDate = '';
 
             updateStreakDisplay(state);
-            loadCurriculum();
+            loadLessons();
 
-            // Check if current lesson is completed
-            if (state.completedModules[CURRENT_LESSON_ID]) {
+            if (state.completedLessons[CURRENT_LESSON_ID]) {
                 setCompletedButtonState(true);
             }
 
-            // Restore checklist items
-            ['task1', 'task2'].forEach(taskId => {
-                if (state['check_' + taskId]) {
-                    const el = document.querySelector(`[onclick*="${taskId}"]`);
-                    if (el) el.classList.add('checked');
-                }
-            });
-
-            // Auto-check video completion when ended
+            // AUTO-CHECKLIST STRICTLY WHEN VIDEO FINISHES
             video.addEventListener('ended', () => {
                 const s = getStorage();
-                if (!s.completedModules[CURRENT_LESSON_ID]) {
-                    markLessonComplete(true);
+                if (!s.completedLessons[CURRENT_LESSON_ID]) {
+                    triggerVideoCompleted();
                 }
             });
         }
 
-        // UPDATE STREAK BADGE
         function updateStreakDisplay(state) {
             const badge = document.getElementById('streakBadge');
             const count = document.getElementById('streakCount');
@@ -961,7 +913,6 @@
             }
         }
 
-        // SET COMPLETED BUTTON STATE
         function setCompletedButtonState(isDone) {
             const btn = document.getElementById('completeBtn');
             if (isDone) {
@@ -970,32 +921,30 @@
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
                         <polyline points="20 6 9 17 4 12"></polyline>
                     </svg>
-                    Selesai Dipelajari (Api Menyala)
+                    <span>Materi Selesai Ditonton • Api Menyala</span>
                 `;
             } else {
                 btn.classList.remove('done');
                 btn.innerHTML = `
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                        <polyline points="20 6 9 17 4 12"></polyline>
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <line x1="12" y1="8" x2="12" y2="12"></line>
+                        <line x1="12" y1="16" x2="12.01" y2="16"></line>
                     </svg>
-                    Tandai Selesai & Nyalakan Api Belajar
+                    <span>Tonton Video Hingga Selesai untuk Menyalakan Api</span>
                 `;
             }
         }
 
-        // MARK LESSON COMPLETE
-        function markLessonComplete(autoByVideo = false) {
+        function triggerVideoCompleted() {
             const state = getStorage();
-            if (!state.completedModules) state.completedModules = {};
+            if (!state.completedLessons) state.completedLessons = {};
 
             const todayStr = new Date().toISOString().split('T')[0];
-            const isAlreadyDone = !!state.completedModules[CURRENT_LESSON_ID];
-
-            state.completedModules[CURRENT_LESSON_ID] = true;
+            state.completedLessons[CURRENT_LESSON_ID] = true;
 
             // Handle Duolingo flame streak calculation
             if (state.lastDate !== todayStr) {
-                // If yesterday was last date, increment streak, else reset to 1
                 const yesterday = new Date();
                 yesterday.setDate(yesterday.getDate() - 1);
                 const yesterdayStr = yesterday.toISOString().split('T')[0];
@@ -1011,22 +960,18 @@
             saveStorage(state);
             updateStreakDisplay(state);
             setCompletedButtonState(true);
-            updateCurriculumUI();
+            renderLessons(allLessons);
 
-            // Show celebration modal
-            showStreakModal(state.streak, autoByVideo);
+            showStreakModal(state.streak);
         }
 
-        // STREAK MODAL
-        function showStreakModal(streakCount, autoByVideo) {
+        function showStreakModal(streakCount) {
             const modal = document.getElementById('streakModal');
             const title = document.getElementById('modalStreakTitle');
             const desc = document.getElementById('modalStreakDesc');
 
             title.textContent = `Api Belajar Hari ke-${streakCount}! 🔥`;
-            desc.textContent = autoByVideo 
-                ? `Video selesai ditonton penuh! Modul 18. Bakar otomatis tercentang dan api belajarmu tetap berkobar!`
-                : `Luar biasa Bang Rido! Modul 18. Bakar resmi selesai dipelajari. Satu langkah konsisten menuju penguasaan penuh!`;
+            desc.textContent = `Hebat Bang Rido! Video 18. Bakar selesai ditonton sampai akhir. Materi otomatis ter-checklist di kurikulum dan api streak belajarmu tetap menyala!`;
 
             modal.classList.add('show');
         }
@@ -1035,15 +980,6 @@
             document.getElementById('streakModal').classList.remove('show');
         }
 
-        // CHECKLIST TOGGLE
-        function toggleCheck(element, taskId) {
-            element.classList.toggle('checked');
-            const state = getStorage();
-            state['check_' + taskId] = element.classList.contains('checked');
-            saveStorage(state);
-        }
-
-        // CONTROLS SPEED & TIME
         function setSpeed(speed, btn) {
             video.playbackRate = speed;
             document.querySelectorAll('.control-group .btn-ctl').forEach(b => b.classList.remove('active'));
@@ -1054,7 +990,6 @@
             video.currentTime = Math.max(0, video.currentTime + sec);
         }
 
-        // DRAWER CONTROLS
         const overlay = document.getElementById('drawerOverlay');
         const drawer = document.getElementById('sidebarDrawer');
 
@@ -1068,99 +1003,94 @@
             drawer.classList.remove('open');
         }
 
-        // LOAD CURRICULUM DATA
-        async function loadCurriculum() {
+        async function loadLessons() {
             try {
-                const res = await fetch('curriculum.json');
-                curriculumData = await res.json();
-                renderCurriculum(curriculumData);
+                const res = await fetch('curriculum_lessons.json');
+                allLessons = await res.json();
+                renderLessons(allLessons);
             } catch (err) {
-                console.error('Failed to load curriculum', err);
+                console.error('Failed to load lessons', err);
             }
         }
 
-        function renderCurriculum(data) {
+        function renderLessons(lessonsToRender) {
             const container = document.getElementById('drawerModulesList');
             container.innerHTML = '';
 
             const state = getStorage();
-            const completed = state.completedModules || {};
+            const completed = state.completedLessons || {};
 
-            // Group by phase
-            const phases = {};
-            data.forEach(item => {
-                if (!phases[item.phase_title]) phases[item.phase_title] = [];
-                phases[item.phase_title].push(item);
+            const phases = {
+                'Fase 1: Mindset & Subconscious': [],
+                'Fase 2: Sales, Funneling & Copywriting': [],
+                'Fase 3: Business Mastery & Scale Up': [],
+                'Fase 4: Sistem SOP, HRD & CEO': []
+            };
+
+            let totalCompleted = 0;
+
+            allLessons.forEach(l => {
+                if (completed[l.id]) totalCompleted++;
             });
 
-            let totalCompletedCount = 0;
+            lessonsToRender.forEach(l => {
+                if (phases[l.phase_name]) {
+                    phases[l.phase_name].push(l);
+                }
+            });
 
-            for (const [phaseTitle, modules] of Object.entries(phases)) {
+            for (const [phaseTitle, list] of Object.entries(phases)) {
+                if (list.length === 0) continue;
+
                 const phaseEl = document.createElement('div');
                 phaseEl.className = 'phase-group';
 
                 const header = document.createElement('div');
                 header.className = 'phase-header';
-                header.textContent = phaseTitle;
+                header.textContent = `${phaseTitle} (${list.length} Video)`;
                 phaseEl.appendChild(header);
 
-                modules.forEach(mod => {
-                    // special check for current module
-                    const isModCompleted = (mod.id === 'mod_1' || mod.title.includes('Bakar')) 
-                        ? !!completed[CURRENT_LESSON_ID] 
-                        : !!completed[mod.id];
+                list.forEach(item => {
+                    const isDone = !!completed[item.id];
+                    const isActive = item.id === CURRENT_LESSON_ID;
 
-                    if (isModCompleted) totalCompletedCount++;
+                    const row = document.createElement('div');
+                    row.className = `lesson-item ${isDone ? 'completed' : ''} ${isActive ? 'active' : ''}`;
 
-                    const modEl = document.createElement('div');
-                    modEl.className = `module-item ${isModCompleted ? 'completed' : ''} ${mod.title.includes('Bakar') ? 'active' : ''}`;
-                    modEl.onclick = () => toggleModuleComplete(mod.id, modEl);
-
-                    modEl.innerHTML = `
-                        <div class="module-info">
-                            <span class="module-name">${mod.title}</span>
-                            <span class="module-meta">${mod.videos} video • ${mod.duration_min}m • ${mod.docs} docs</span>
+                    row.innerHTML = `
+                        <div class="lesson-info">
+                            <span class="lesson-name">${item.title}</span>
+                            <span class="lesson-folder">${item.folder}</span>
                         </div>
-                        <div class="module-check-badge">
+                        <div class="lesson-check-badge" title="${isDone ? 'Selesai ditonton' : 'Terkunci otomatis'}">
                             <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
                         </div>
                     `;
-                    phaseEl.appendChild(modEl);
+                    phaseEl.appendChild(row);
                 });
 
                 container.appendChild(phaseEl);
             }
 
-            // Update Progress Bar
-            const total = data.length || 92;
-            const pct = Math.round((totalCompletedCount / total) * 100);
+            const total = allLessons.length || 656;
+            const pct = Math.round((totalCompleted / total) * 100);
             document.getElementById('progressBar').style.width = pct + '%';
-            document.getElementById('progressPercent').textContent = `${pct}% (${totalCompletedCount} / ${total} Modul)`;
+            document.getElementById('progressPercent').textContent = `${pct}% (${totalCompleted} / ${total} Video)`;
         }
 
-        function toggleModuleComplete(modId, el) {
-            const state = getStorage();
-            if (!state.completedModules) state.completedModules = {};
-
-            const isDone = !state.completedModules[modId];
-            state.completedModules[modId] = isDone;
-
-            if (modId === CURRENT_LESSON_ID || modId === 'mod_1') {
-                state.completedModules[CURRENT_LESSON_ID] = isDone;
-                setCompletedButtonState(isDone);
+        function filterLessons() {
+            const query = document.getElementById('searchLessons').value.toLowerCase().trim();
+            if (!query) {
+                renderLessons(allLessons);
+                return;
             }
-
-            saveStorage(state);
-            updateCurriculumUI();
+            const filtered = allLessons.filter(l => 
+                l.title.toLowerCase().includes(query) || 
+                l.folder.toLowerCase().includes(query)
+            );
+            renderLessons(filtered);
         }
 
-        function updateCurriculumUI() {
-            if (curriculumData.length > 0) {
-                renderCurriculum(curriculumData);
-            }
-        }
-
-        // Start
         window.addEventListener('DOMContentLoaded', initApp);
     </script>
 </body>
