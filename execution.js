@@ -1,14 +1,16 @@
 (() => {
-  // Remove any previous instance cleanly
-  const existing = document.querySelector(".framework-engine");
+  // Clean up any prior instances
+  const existing = document.querySelector(".realistic-framework");
   if (existing) existing.remove();
+  const oldEngine = document.querySelector(".framework-engine");
+  if (oldEngine) oldEngine.remove();
   const oldBurn = document.querySelector(".burn-lab");
   if (oldBurn) oldBurn.remove();
 
   // Create framework container
   const host = document.createElement("section");
-  host.className = "framework-engine";
-  host.setAttribute("aria-label", "Servo Reset Operational Framework");
+  host.className = "realistic-framework";
+  host.setAttribute("aria-label", "Framework Praktik Realistis Materi Bakar");
 
   const notes = document.querySelector(".notes");
   if (notes) {
@@ -17,8 +19,8 @@
     document.querySelector(".lesson").append(host);
   }
 
-  // Inject Stylesheet
-  const styleId = "framework-engine-styles";
+  // Inject Styles
+  const styleId = "realistic-framework-styles";
   let styleEl = document.getElementById(styleId);
   if (!styleEl) {
     styleEl = document.createElement("style");
@@ -27,442 +29,402 @@
   }
 
   styleEl.textContent = `
-    .framework-engine {
-      margin: 32px 0 28px;
-      background: #0d1117;
-      border: 1px solid #21262d;
-      border-radius: 18px;
-      padding: 26px;
-      color: #e6edf3;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "DM Sans", Roboto, sans-serif;
-      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
+    .realistic-framework {
+      margin: 36px 0 28px;
+      background: #fffdf9;
+      border: 1px solid #e5dfd5;
+      border-radius: 16px;
+      padding: 28px;
+      color: #2b2823;
+      font-family: "DM Sans", -apple-system, BlinkMacSystemFont, sans-serif;
+      box-shadow: 0 10px 30px rgba(50, 40, 30, 0.05);
       position: relative;
-      overflow: hidden;
     }
 
-    /* Ambient Energy Radial Glow */
-    .framework-engine::before {
-      content: "";
-      position: absolute;
-      top: -100px;
-      right: -80px;
-      width: 320px;
-      height: 320px;
-      background: radial-gradient(circle, rgba(234, 88, 12, 0.15) 0%, rgba(13, 17, 23, 0) 70%);
-      pointer-events: none;
-      z-index: 0;
-    }
-
-    .fe-content {
-      position: relative;
-      z-index: 1;
-    }
-
-    /* Top Executive Header */
-    .fe-header {
+    /* Header Section */
+    .rf-header {
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
-      gap: 18px;
-      padding-bottom: 20px;
-      border-bottom: 1px solid #21262d;
+      gap: 16px;
+      padding-bottom: 22px;
+      border-bottom: 1px solid #eee8df;
       flex-wrap: wrap;
     }
-    .fe-header-left {
+    .rf-header-text {
       flex: 1;
       min-width: 260px;
     }
-    .fe-badge-row {
-      display: flex;
+    .rf-badge {
+      display: inline-flex;
       align-items: center;
-      gap: 8px;
-      margin-bottom: 6px;
-    }
-    .fe-live-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: #ea580c;
-      box-shadow: 0 0 10px #ea580c;
-      animation: fePulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-    }
-    .fe-badge-text {
-      font-size: 11px;
+      gap: 6px;
+      font-size: 11.5px;
       font-weight: 700;
       letter-spacing: 0.8px;
       text-transform: uppercase;
-      color: #ea580c;
+      color: #a23e26;
+      margin-bottom: 6px;
     }
-    .fe-version-tag {
-      font-size: 10px;
-      background: #161b22;
-      border: 1px solid #30363d;
-      color: #8b949e;
-      padding: 2px 7px;
-      border-radius: 20px;
-      font-family: monospace;
+    .rf-badge-dot {
+      width: 7px;
+      height: 7px;
+      background: #a23e26;
+      border-radius: 50%;
     }
-    .fe-title {
-      font-size: 22px;
-      font-weight: 800;
-      color: #f0f6fc;
-      margin: 0 0 6px;
+    .rf-title {
+      font-family: "Newsreader", Georgia, serif;
+      font-size: 26px;
+      font-weight: 500;
+      color: #1f1d1a;
+      margin: 0 0 8px;
       letter-spacing: -0.5px;
     }
-    .fe-subtitle {
-      font-size: 13px;
-      color: #8b949e;
+    .rf-subtitle {
+      font-size: 14px;
+      color: #6a645a;
       margin: 0;
-      line-height: 1.55;
-      max-width: 560px;
+      line-height: 1.6;
+      max-width: 580px;
     }
 
-    /* Simulation & Quick Action Button */
-    .fe-controls-top {
-      display: flex;
-      gap: 10px;
-      align-items: center;
-    }
-    .fe-btn-sim {
-      background: #161b22;
-      border: 1px solid #30363d;
-      color: #c9d1d9;
-      padding: 9px 15px;
+    .rf-sim-btn {
+      background: #f7f4ee;
+      border: 1px solid #dcd5c9;
+      color: #4a443a;
+      padding: 9px 16px;
       border-radius: 8px;
-      font-size: 12px;
+      font-size: 12.5px;
       font-weight: 600;
       display: inline-flex;
       align-items: center;
-      gap: 8px;
+      gap: 7px;
       cursor: pointer;
       transition: all 0.2s;
     }
-    .fe-btn-sim:hover {
-      background: #21262d;
-      border-color: #ea580c;
-      color: #f0f6fc;
+    .rf-sim-btn:hover {
+      background: #eee8dc;
+      color: #1f1d1a;
+      border-color: #baa792;
     }
-    .fe-btn-sim.active {
-      background: rgba(234, 88, 12, 0.15);
-      border-color: #ea580c;
-      color: #fb923c;
+    .rf-sim-btn.active {
+      background: #fbeee8;
+      border-color: #a23e26;
+      color: #a23e26;
     }
 
-    /* Pipeline Step Nodes */
-    .fe-pipeline {
+    /* 4-Step Physical Pipeline Tracker */
+    .rf-stepper {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 10px;
-      margin: 22px 0 14px;
+      margin: 24px 0 16px;
     }
     @media (max-width: 768px) {
-      .fe-pipeline {
+      .rf-stepper {
         grid-template-columns: 1fr 1fr;
       }
     }
-    @media (max-width: 460px) {
-      .fe-pipeline {
+    @media (max-width: 440px) {
+      .rf-stepper {
         grid-template-columns: 1fr;
       }
     }
 
-    .fe-node {
-      background: #161b22;
-      border: 1px solid #30363d;
-      border-radius: 12px;
+    .rf-step-card {
+      background: #faf7f0;
+      border: 1px solid #e5ded3;
+      border-radius: 10px;
       padding: 14px;
       text-align: left;
       cursor: pointer;
-      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
       position: relative;
-      overflow: hidden;
     }
-    .fe-node:hover {
-      border-color: #484f58;
+    .rf-step-card:hover {
+      border-color: #c9bea9;
       transform: translateY(-2px);
     }
-    .fe-node.active {
-      background: #1c2128;
-      border-color: #ea580c;
-      box-shadow: 0 0 20px rgba(234, 88, 12, 0.22);
+    .rf-step-card.active {
+      background: #ffffff;
+      border-color: #a23e26;
+      box-shadow: 0 4px 16px rgba(162, 62, 38, 0.12);
     }
-    .fe-node.done {
-      border-color: #238636;
+    .rf-step-card.done {
+      border-color: #286144;
+      background: #f4f8f5;
     }
-    .fe-node-top {
+
+    .rf-step-card-top {
       display: flex;
       justify-content: space-between;
       align-items: center;
       margin-bottom: 6px;
     }
-    .fe-node-num {
-      font-size: 10px;
-      font-weight: 800;
-      color: #8b949e;
-      letter-spacing: 0.5px;
-      font-family: monospace;
+    .rf-step-num {
+      font-size: 11px;
+      font-weight: 700;
+      color: #8c8272;
     }
-    .fe-node.active .fe-node-num {
-      color: #ea580c;
+    .rf-step-card.active .rf-step-num {
+      color: #a23e26;
     }
-    .fe-node.done .fe-node-num {
-      color: #3fb950;
+    .rf-step-card.done .rf-step-num {
+      color: #286144;
     }
-    .fe-node-state {
-      font-size: 9px;
+    .rf-step-tag {
+      font-size: 9.5px;
       font-weight: 700;
       padding: 2px 6px;
       border-radius: 4px;
-      background: #0d1117;
-      color: #8b949e;
-      text-transform: uppercase;
-      font-family: monospace;
+      background: #eae3d5;
+      color: #6a6252;
     }
-    .fe-node.active .fe-node-state {
-      background: rgba(234, 88, 12, 0.2);
-      color: #fb923c;
+    .rf-step-card.active .rf-step-tag {
+      background: #fae8e3;
+      color: #a23e26;
     }
-    .fe-node.done .fe-node-state {
-      background: rgba(46, 160, 67, 0.2);
-      color: #3fb950;
+    .rf-step-card.done .rf-step-tag {
+      background: #e2efe7;
+      color: #286144;
     }
-    .fe-node-name {
-      font-size: 13px;
+    .rf-step-name {
+      font-size: 13.5px;
       font-weight: 700;
-      color: #f0f6fc;
+      color: #2b2823;
       margin: 0 0 3px;
     }
-    .fe-node-sub {
-      font-size: 11px;
-      color: #8b949e;
-      margin: 0;
+    .rf-step-desc {
+      font-size: 11.5px;
+      color: #7a7264;
       line-height: 1.4;
+      margin: 0;
     }
 
-    /* Pipeline Connector Track */
-    .fe-connector-bar {
+    /* Track Progress Line */
+    .rf-track {
       height: 4px;
-      background: #21262d;
+      background: #ece5d8;
       border-radius: 2px;
       position: relative;
-      margin-bottom: 22px;
+      margin-bottom: 24px;
       overflow: hidden;
     }
-    .fe-connector-progress {
+    .rf-track-fill {
       position: absolute;
-      top: 0;
       left: 0;
+      top: 0;
       height: 100%;
-      background: linear-gradient(90deg, #ea580c 0%, #f97316 60%, #238636 100%);
-      transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-      box-shadow: 0 0 10px rgba(234, 88, 12, 0.5);
+      background: linear-gradient(90deg, #a23e26 0%, #c45b3f 60%, #286144 100%);
+      transition: width 0.35s ease;
     }
 
-    /* Dynamic Stage Card */
-    .fe-stage-card {
-      background: #161b22;
-      border: 1px solid #30363d;
+    /* Main Interaction Card */
+    .rf-main-stage {
+      background: #fdfbf7;
+      border: 1px solid #e8e1d5;
       border-radius: 14px;
-      padding: 22px;
+      padding: 24px;
       position: relative;
     }
 
-    /* Visual Stage Animation Arena */
-    .fe-visual-arena {
-      height: 180px;
-      border-radius: 10px;
-      background: #090d12;
-      border: 1px solid #21262d;
-      margin-bottom: 22px;
+    /* Realistic Visual Arena */
+    .rf-visual-box {
+      height: 220px;
+      background: #1c1917;
+      border-radius: 12px;
       position: relative;
       overflow: hidden;
+      margin-bottom: 22px;
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: inset 0 4px 20px rgba(0, 0, 0, 0.5);
+      box-shadow: inset 0 2px 14px rgba(0, 0, 0, 0.4);
     }
-    .fe-visual-svg {
+    .rf-visual-canvas {
       width: 100%;
       height: 100%;
       display: block;
     }
 
-    /* Step Title & Details */
-    .fe-step-meta {
+    /* Step Details & Directives */
+    .rf-stage-header {
       display: flex;
       justify-content: space-between;
       align-items: baseline;
       gap: 12px;
-      margin-bottom: 14px;
+      margin-bottom: 12px;
       flex-wrap: wrap;
     }
-    .fe-step-title {
-      font-size: 16px;
-      font-weight: 700;
-      color: #f0f6fc;
+    .rf-stage-title {
+      font-family: "Newsreader", Georgia, serif;
+      font-size: 21px;
+      font-weight: 500;
+      color: #1f1d1a;
       margin: 0;
     }
-    .fe-step-phase-tag {
+    .rf-stage-phase-label {
       font-size: 11px;
-      font-weight: 800;
-      color: #ea580c;
-      font-family: monospace;
+      font-weight: 700;
+      color: #a23e26;
       letter-spacing: 0.5px;
+      text-transform: uppercase;
     }
-    .fe-step-prompt {
-      font-size: 13px;
-      color: #8b949e;
+    .rf-stage-instruction {
+      font-size: 13.5px;
+      color: #6a645a;
       margin: 0 0 16px;
-      line-height: 1.5;
+      line-height: 1.55;
     }
 
-    /* Ready-to-Tap Option Pills */
-    .fe-pills-grid {
+    /* Realistic Paper / Action Cards (1-Tap Selection) */
+    .rf-cards-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 10px;
+      gap: 12px;
       margin-bottom: 20px;
     }
     @media (max-width: 640px) {
-      .fe-pills-grid {
+      .rf-cards-grid {
         grid-template-columns: 1fr;
       }
     }
 
-    .fe-pill {
-      background: #0d1117;
-      border: 1px solid #30363d;
+    .rf-item-card {
+      background: #ffffff;
+      border: 1px solid #dcd4c5;
       border-radius: 10px;
-      padding: 14px;
+      padding: 16px;
       cursor: pointer;
       text-align: left;
       transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
       display: flex;
       flex-direction: column;
-      gap: 5px;
+      gap: 6px;
+      box-shadow: 0 2px 6px rgba(40, 30, 20, 0.03);
     }
-    .fe-pill:hover {
-      border-color: #484f58;
-      background: #161b22;
-      transform: translateY(-1px);
+    .rf-item-card:hover {
+      border-color: #bfae98;
+      background: #fffefa;
+      transform: translateY(-2px);
     }
-    .fe-pill.selected {
-      border-color: #ea580c;
-      background: rgba(234, 88, 12, 0.08);
-      box-shadow: 0 0 14px rgba(234, 88, 12, 0.15);
+    .rf-item-card.selected {
+      border-color: #a23e26;
+      background: #fdf6f3;
+      box-shadow: 0 4px 12px rgba(162, 62, 38, 0.1);
     }
-    .fe-pill-title {
-      font-size: 13px;
+    .rf-item-card-title {
+      font-size: 13.5px;
       font-weight: 700;
-      color: #f0f6fc;
+      color: #2b2823;
       display: flex;
       align-items: center;
       gap: 6px;
     }
-    .fe-pill.selected .fe-pill-title {
-      color: #fb923c;
+    .rf-item-card.selected .rf-item-card-title {
+      color: #a23e26;
     }
-    .fe-pill-desc {
-      font-size: 11.5px;
-      color: #8b949e;
-      line-height: 1.45;
+    .rf-item-card-desc {
+      font-size: 12px;
+      color: #6e675b;
+      line-height: 1.5;
     }
 
-    /* Focus Timer Display (Phase 4) */
-    .fe-timer-box {
-      background: #0d1117;
-      border: 1px solid #238636;
+    /* Stage 4: Real Focus Timer */
+    .rf-timer-module {
+      background: #f4f8f5;
+      border: 1px solid #c8ded2;
       border-radius: 10px;
-      padding: 14px 18px;
-      margin-bottom: 18px;
+      padding: 16px 20px;
       display: flex;
-      align-items: center;
       justify-content: space-between;
-      gap: 14px;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 20px;
       flex-wrap: wrap;
     }
-    .fe-timer-info {
+    .rf-timer-left {
       display: flex;
       flex-direction: column;
       gap: 3px;
     }
-    .fe-timer-label {
-      font-size: 10.5px;
+    .rf-timer-eyebrow {
+      font-size: 11px;
       font-weight: 700;
-      color: #3fb950;
+      color: #286144;
       text-transform: uppercase;
-      font-family: monospace;
       letter-spacing: 0.5px;
     }
-    .fe-timer-digits {
-      font-size: 24px;
+    .rf-timer-clock {
+      font-size: 28px;
       font-weight: 800;
-      color: #f0f6fc;
+      color: #1a422e;
       font-family: monospace;
       letter-spacing: 1px;
     }
-    .fe-timer-btns {
+    .rf-timer-controls {
       display: flex;
       gap: 8px;
     }
-    .fe-btn-timer {
-      background: #21262d;
-      border: 1px solid #30363d;
-      color: #c9d1d9;
-      padding: 6px 12px;
+    .rf-btn-clock {
+      background: #ffffff;
+      border: 1px solid #bdd5c7;
+      color: #1f4733;
+      padding: 8px 14px;
       border-radius: 6px;
-      font-size: 12px;
+      font-size: 12.5px;
       font-weight: 600;
       cursor: pointer;
+      transition: all 0.15s;
     }
-    .fe-btn-timer:hover {
-      background: #30363d;
-      color: #f0f6fc;
+    .rf-btn-clock:hover {
+      background: #e6f0ea;
+      border-color: #9ec1ae;
     }
 
-    /* Bottom Action Bar */
-    .fe-action-bar {
+    /* Bottom Action Controls */
+    .rf-action-bar {
       display: flex;
-      align-items: center;
       justify-content: space-between;
-      gap: 16px;
+      align-items: center;
+      gap: 14px;
+      padding-top: 16px;
+      border-top: 1px solid #eee8df;
       flex-wrap: wrap;
-      padding-top: 14px;
-      border-top: 1px solid #21262d;
     }
-    .fe-insight-callout {
-      font-size: 12px;
-      color: #8b949e;
+    .rf-insight-text {
+      font-size: 12.5px;
+      color: #665f54;
+      line-height: 1.55;
       flex: 1;
       min-width: 240px;
-      line-height: 1.5;
     }
-    .fe-insight-callout strong {
-      color: #ea580c;
+    .rf-insight-text strong {
+      color: #a23e26;
     }
-    .fe-btn-group {
+    .rf-action-buttons {
       display: flex;
       gap: 10px;
       align-items: center;
     }
     @media (max-width: 640px) {
-      .fe-btn-group {
+      .rf-action-buttons {
         width: 100%;
       }
-      .fe-btn-primary, .fe-btn-secondary {
+      .rf-btn-next, .rf-btn-prev {
         flex: 1;
-        text-align: center;
         justify-content: center;
+        text-align: center;
       }
     }
 
-    .fe-btn-primary {
-      background: #ea580c;
+    .rf-btn-next {
+      background: #a23e26;
       color: #ffffff;
-      border: 1px solid #ea580c;
+      border: 1px solid #a23e26;
       border-radius: 8px;
-      padding: 11px 20px;
-      font-size: 13px;
+      padding: 11px 22px;
+      font-size: 13.5px;
       font-weight: 700;
       cursor: pointer;
       display: inline-flex;
@@ -470,463 +432,624 @@
       gap: 8px;
       transition: all 0.2s;
     }
-    .fe-btn-primary:hover {
-      background: #f97316;
-      border-color: #f97316;
+    .rf-btn-next:hover {
+      background: #8b341f;
+      border-color: #8b341f;
       transform: translateY(-1px);
     }
-    .fe-btn-secondary {
-      background: transparent;
-      color: #8b949e;
-      border: 1px solid #30363d;
+    .rf-btn-prev {
+      background: #f7f4ee;
+      color: #6a645a;
+      border: 1px solid #ded6c8;
       border-radius: 8px;
       padding: 11px 16px;
-      font-size: 13px;
+      font-size: 13.5px;
       font-weight: 600;
       cursor: pointer;
       transition: all 0.2s;
     }
-    .fe-btn-secondary:hover {
-      color: #f0f6fc;
-      border-color: #484f58;
-    }
-
-    /* Keyframe Animations */
-    @keyframes fePulse {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.35; transform: scale(0.85); }
-    }
-    @keyframes circuitFlow {
-      from { stroke-dashoffset: 80; }
-      to { stroke-dashoffset: 0; }
-    }
-    @keyframes coreThermal {
-      0% { transform: scale(0.96) rotate(-2deg); filter: drop-shadow(0 0 16px rgba(234, 88, 12, 0.7)); }
-      50% { transform: scale(1.08) rotate(3deg); filter: drop-shadow(0 0 32px rgba(249, 115, 22, 0.95)); }
-      100% { transform: scale(0.96) rotate(-2deg); filter: drop-shadow(0 0 16px rgba(234, 88, 12, 0.7)); }
-    }
-    @keyframes emberRise {
-      0% { transform: translateY(0) scale(1); opacity: 1; }
-      100% { transform: translateY(-70px) scale(0.3); opacity: 0; }
-    }
-    @keyframes scanSweep {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
+    .rf-btn-prev:hover {
+      background: #eee8dc;
+      color: #2b2823;
     }
   `;
 
-  // Framework Structural Data
-  const phases = [
+  // Realistic Grounded 4-Step Framework
+  const steps = [
     {
       num: "01",
-      badge: "DIAGNOSA",
-      name: "Deteksi Glitch",
-      sub: "Tangkap servo negatif yang menyabotase",
-      title: "Tahap 1: Deteksi Pola Sabotase Sub-Sadar",
-      phaseTag: "PHASE 01 / FAULT DETECTION",
-      prompt: "Pilih pola sabotase yang paling sering menghambat langkahmu (tanpa perlu mengetik):",
-      options: [
-        { title: "Takut Salah / Perfeksionis", desc: "Menunggu kondisi 100% aman sebelum mulai eksekusi." },
-        { title: "Inersia Menunda (Procrastination)", desc: "Tahu apa yang harus dikerjakan, tetapi lari ke urusan sepele." },
-        { title: "Perbandingan Diri (Comparison Loop)", desc: "Fokus ke pencapaian orang lain, energi habis sebelum mulai." }
+      tag: "LANGKAH 1",
+      name: "Tulis Beban Nyata",
+      desc: "Akui 1 hambatan yang bikin macet hari ini",
+      title: "Langkah 1: Akui 1 Beban atau Ketakutan Nyata Hari Ini",
+      phaseLabel: "IDENTIFIKASI OBJEKTIF",
+      instruction: "Seperti yang dicontohkan di video, tuliskan atau pilih satu beban mental nyata yang selama ini bikin kamu menunda (tanpa perlu mengetik):",
+      cards: [
+        {
+          title: "Takut Gagal & Overthinking",
+          desc: "Merasa hasil kerjanya belum sempurna, jadi terus ditunda dan tidak berani mulai."
+        },
+        {
+          title: "Inersia Menunda Pekerjaan Penting",
+          desc: "Tahu persis apa yang harus diselesaikan, tapi malah scroll HP atau ngerjain hal sepele."
+        },
+        {
+          title: "Ragu Menghubungi / Menawarkan",
+          desc: "Ada rasa canggung atau takut ditolak saat mau follow up konsumen atau orang lain."
+        }
       ],
-      insight: "Pola telah diidentifikasi. Servo mechanism siap memasuki tahap isolasi feedback.",
-      btnLabel: "Isolasi Loop Ini ➔"
+      insight: "Mengakui beban di atas kertas memindahkan masalah dari kepala yang kalut menjadi objek nyata yang bisa dilepaskan.",
+      btnLabel: "Remas & Siapkan Pelepasan ➔"
     },
     {
       num: "02",
-      badge: "ISOLASI",
-      name: "Putus Loop Emosi",
-      sub: "Dekopling rantai emosional masa lalu",
-      title: "Tahap 2: Dekopling & Isolasi Emosional",
-      phaseTag: "PHASE 02 / LOOP DECOUPLING",
-      prompt: "Servo lama bekerja otomatis jika terus diberi suplai reaksi emosional. Tentukan strategi dekonstruksi:",
-      options: [
-        { title: "Dekopling Identitas", desc: "Pisahkan nilai dirimu dari kegagalan masa lalu." },
-        { title: "Hentikan Debat Internal", desc: "Stop merasionalisasi alasan di dalam kepala." },
-        { title: "Labeli Sebagai Data Usang", desc: "Anggap beban tersebut sebagai kode kadaluwarsa tanpa daya." }
+      tag: "LANGKAH 2",
+      name: "Putus Keterikatan",
+      desc: "Dekonstruksi: pisahkan dirimu dari beban itu",
+      title: "Langkah 2: Pisahkan Diri dari Beban Tersebut",
+      phaseLabel: "DEKONSTRUKSI EGO",
+      instruction: "Beban itu bukan identitasmu, itu cuma catatan masa lalu. Tentukan caramu memandang beban ini sekarang:",
+      cards: [
+        {
+          title: "Ini Hanya Pola Lama, Bukan Diriku",
+          desc: "Kesalahan atau rasa malas kemarin tidak menentukan kemampuanku hari ini."
+        },
+        {
+          title: "Hentikan Debat di Kepala",
+          desc: "Tidak usah dicari seribu alasan pembelaan. Cukup lihat apa adanya dan terima."
+        },
+        {
+          title: "Cukup Sampai di Sini",
+          desc: "Tutup bab lama. Energi hari ini tidak boleh lagi bocor untuk memikirkan yang sudah lewat."
+        }
       ],
-      insight: "Rantai reaksi diputus. Energi ke pola masa lalu dialihkan ke nol.",
-      btnLabel: "Masuki Ruang Bakar (Reset) ➔"
+      insight: "Saat kamu berhenti memberi makan emosi pada masalah lama, masalah itu kehilangan kekuatannya untuk mengatur tindakanmu.",
+      btnLabel: "Bawa ke Api Pelepasan ➔"
     },
     {
       num: "03",
-      badge: "THE BURN",
-      name: "The Burn (Reset Nol)",
-      sub: "Bakar opsi mundur (Burn the Boats)",
-      title: "Tahap 3: The Burn - Zero-Point Reset",
-      phaseTag: "PHASE 03 / ZERO-POINT IGNITION",
-      prompt: "Simbol pelepasan total dari materi Bakar. Bakar opsi mundur agar fokus 100% terkonsentrasi ke depan:",
-      options: [
-        { title: "Hapus Pintu Belakang", desc: "Tidak ada Plan B yang menjadi alasan untuk kendur." },
-        { title: "Pelepasan Simbolis", desc: "Lepaskan beban masa lalu sepenuhnya di titik ini." },
-        { title: "Komitmen Garis Depan", desc: "Hanya ada satu arah gerak: maju dan selesaikan." }
+      tag: "LANGKAH 3",
+      name: "Bakar Sampai Habis",
+      desc: "Simbol pelepasan total tanpa jalan mundur",
+      title: "Langkah 3: Pembakaran Simbolis (Bakar Sampai Habis)",
+      phaseLabel: "PELEPASAN TOTAL",
+      instruction: "Inti materi 18: Kertas masalah digulung dan dibakar di api unggun. Hilangkan opsi mundur ('Burn the Boats') agar fokus 100% maju:",
+      cards: [
+        {
+          title: "Hapus Rencana Mundur (No Plan B)",
+          desc: "Maju dengan komitmen penuh, tanpa menyediakan pintu belakang untuk kabur."
+        },
+        {
+          title: "Relakan & Lepaskan Beban",
+          desc: "Ikhlaskan yang sudah terjadi. Biarkan semua keraguan habis terbakar bersama kertas ini."
+        },
+        {
+          title: "Hening & Bersihkan Pikiran",
+          desc: "Rasakan kelegaan setelah beban dilepaskan. Siapkan energi untuk eksekusi nyata."
+        }
       ],
-      insight: "Ignisi selesai. Koordinat mental disetel ulang ke titik nol.",
-      btnLabel: "Kunci Aksi Momentum ➔"
+      insight: "Kertas dan masalahnya sudah jadi abu. Meja sekarang bersih, pikiran kosong dari keraguan, siap melangkah.",
+      btnLabel: "Buka Meja Kerja & Mulai Aksi ➔"
     },
     {
       num: "04",
-      badge: "MOMENTUM",
-      name: "Eksekusi Aksi",
-      sub: "Arahkan servo baru ke target konkret",
-      title: "Tahap 4: Kunci Servo Baru ke Aksi Nyata",
-      phaseTag: "PHASE 04 / VECTOR LOCK & EXECUTION",
-      prompt: "Pilih 1 rekomendasi aksi nyata yang langsung kamu jalankan sekarang:",
-      options: [
-        { title: "2-Minute Ignition", desc: "Buka 1 dokumen/tugas tertunda. Kerjakan draft pertama selama 2 menit tanpa revisi." },
-        { title: "Zero Backdoor Focus", desc: "Singkirkan HP ke ruangan lain & tutup tab distraksi selama 25 menit." },
-        { title: "Kunci 1 Metrik Hari Ini", desc: "Tuntaskan 1 tugas paling prioritas hari ini sebelum membuka hal lain." }
+      tag: "LANGKAH 4",
+      name: "Eksekusi Nyata 5 Menit",
+      desc: "Langsung kerja di dunia nyata tanpa ditunda",
+      title: "Langkah 4: Aksi Nyata 5 Menit di Dunia Nyata",
+      phaseLabel: "EKSEKUSI MOMENTUM",
+      instruction: "Pilih 1 aksi realistis yang langsung kamu lakukan sekarang di mejamu (tanpa ngetik, langsung praktik):",
+      cards: [
+        {
+          title: "Aturan 5 Menit Pertama",
+          desc: "Buka dokumen/tugas yang tertunda sekarang. Tulis apa saja selama 5 menit tanpa mengoreksi atau menghakimi."
+        },
+        {
+          title: "Meja Bersih & HP Dibalik",
+          desc: "Taruh HP di luar jangkauan (layar dibalik), tutup tab yang tidak perlu, kerjakan 1 prioritas terpenting."
+        },
+        {
+          title: "Kirim 1 Komunikasi Penting",
+          desc: "Kirimkan 1 pesan, chat, atau email penting yang selama ini kamu tunda karena ragu."
+        }
       ],
-      insight: "Target terkunci. Servo mechanism diarahkan ke satu sasaran konkret.",
-      btnLabel: "Konfirmasi Praktik Tuntas ✓"
+      insight: "Jangan menunggu motivasi datang baru bergerak. Bergerak dulu 5 menit, maka fokus dan motivasi akan mengikuti.",
+      btnLabel: "Saya Sudah Praktikkan Nyata ✓"
     }
   ];
 
-  // Load persistent state
+  // Persistent storage state
   function getPracticeState() {
-    if (!state.bakarPractice || typeof state.bakarPractice !== "object") {
-      state.bakarPractice = {};
+    if (!state.realisticPractice || typeof state.realisticPractice !== "object") {
+      state.realisticPractice = {};
     }
-    if (!state.bakarPractice[LESSON]) {
-      state.bakarPractice[LESSON] = {
+    if (!state.realisticPractice[LESSON]) {
+      state.realisticPractice[LESSON] = {
         step: 0,
-        selectedOpts: [0, 0, 0, 0],
+        selectedCards: [0, 0, 0, 0],
         completed: false,
-        timerSeconds: 120,
-        timerRunning: false
+        timerSeconds: 300,
+        completedAt: null
       };
     }
-    return state.bakarPractice[LESSON];
+    return state.realisticPractice[LESSON];
   }
 
   const pState = getPracticeState();
   let currentStep = pState.step || 0;
-  let selectedOpts = pState.selectedOpts || [0, 0, 0, 0];
+  let selectedCards = pState.selectedCards || [0, 0, 0, 0];
   let isSimulating = false;
-  let timerInterval = null;
-  let timerSec = pState.timerSeconds || 120;
+  let simTimer = null;
   let timerActive = false;
+  let timerSec = pState.timerSeconds || 300;
+  let timerInterval = null;
 
-  // Render SVG Animation per Stage
-  function renderVisualAnimation(idx) {
-    if (idx === 0) {
-      // Stage 1: Cybernetic Radar Diagnostics
-      return `
-        <svg class="fe-visual-svg" viewBox="0 0 500 180">
-          <defs>
-            <radialGradient id="scanGrad" cx="50%" cy="50%" r="50%">
-              <stop offset="0%" stop-color="#ea580c" stop-opacity="0.35"/>
-              <stop offset="60%" stop-color="#ea580c" stop-opacity="0.08"/>
-              <stop offset="100%" stop-color="#090d12" stop-opacity="0"/>
-            </radialGradient>
-          </defs>
+  // Animation Canvas Engine (Realistic Warm Campfire & Desk Simulation)
+  let canvasAnimId = null;
+  let particles = [];
 
-          <!-- Grid Background lines -->
-          <line x1="40" y1="90" x2="460" y2="90" stroke="#161b22" stroke-width="1.5" stroke-dasharray="4 4"/>
-          <line x1="250" y1="20" x2="250" y2="160" stroke="#161b22" stroke-width="1.5" stroke-dasharray="4 4"/>
+  function initCanvasAnimation(stepIdx) {
+    const canvas = host.querySelector("#rfCanvas");
+    if (!canvas) return;
+    const ctx = canvas.getContext("2d");
+    const dpr = window.devicePixelRatio || 1;
+    const rect = canvas.getBoundingClientRect();
+    canvas.width = rect.width * dpr;
+    canvas.height = rect.height * dpr;
+    ctx.scale(dpr, dpr);
 
-          <!-- Radar Concentric Circles -->
-          <circle cx="250" cy="90" r="70" fill="url(#scanGrad)"/>
-          <circle cx="250" cy="90" r="65" fill="none" stroke="#21262d" stroke-width="1.5"/>
-          <circle cx="250" cy="90" r="45" fill="none" stroke="#ea580c" stroke-width="1.5" opacity="0.4"/>
-          <circle cx="250" cy="90" r="25" fill="none" stroke="#30363d" stroke-width="1.5"/>
+    const w = rect.width;
+    const h = rect.height;
 
-          <!-- Scanning Rotary Line -->
-          <g style="transform-origin: 250px 90px; animation: scanSweep 3.5s linear infinite;">
-            <line x1="250" y1="90" x2="310" y2="40" stroke="#ea580c" stroke-width="2.5" stroke-linecap="round"/>
-            <polygon points="250,90 310,40 315,65" fill="#ea580c" opacity="0.2"/>
-          </g>
+    // Reset particles
+    particles = [];
 
-          <!-- Detected Glitch Blip -->
-          <g transform="translate(290, 60)">
-            <circle cx="0" cy="0" r="6" fill="#f97316">
-              <animate attributeName="r" values="4;8;4" dur="1.2s" repeatCount="indefinite"/>
-              <animate attributeName="opacity" values="0.4;1;0.4" dur="1.2s" repeatCount="indefinite"/>
-            </circle>
-            <circle cx="0" cy="0" r="14" fill="none" stroke="#ea580c" stroke-width="1">
-              <animate attributeName="r" values="8;18" dur="1.2s" repeatCount="indefinite"/>
-              <animate attributeName="opacity" values="1;0" dur="1.2s" repeatCount="indefinite"/>
-            </circle>
-          </g>
-
-          <!-- Status Indicator Label -->
-          <rect x="140" y="145" width="220" height="22" rx="4" fill="#161b22" stroke="#30363d" stroke-width="1"/>
-          <text x="250" y="160" text-anchor="middle" fill="#8b949e" font-size="10.5" font-family="monospace" font-weight="700" letter-spacing="0.5">TARGET: SUB-CONSCIOUS GLITCH</text>
-        </svg>
-      `;
-    } else if (idx === 1) {
-      // Stage 2: Circuit Decoupling / Loop Severing
-      return `
-        <svg class="fe-visual-svg" viewBox="0 0 500 180">
-          <defs>
-            <linearGradient id="streamGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stop-color="#30363d"/>
-              <stop offset="100%" stop-color="#ea580c"/>
-            </linearGradient>
-          </defs>
-
-          <!-- Left Incoming Signal -->
-          <line x1="80" y1="90" x2="200" y2="90" stroke="url(#streamGrad)" stroke-width="3" stroke-dasharray="8 6" style="animation: circuitFlow 0.8s linear infinite;"/>
-          <circle cx="200" cy="90" r="10" fill="#161b22" stroke="#ea580c" stroke-width="2.5"/>
-
-          <!-- Severing Laser / Scissors Graphic -->
-          <g transform="translate(250, 90)">
-            <circle cx="0" cy="0" r="22" fill="#21262d" stroke="#f85149" stroke-width="1.5"/>
-            <line x1="-12" y1="-12" x2="12" y2="12" stroke="#f85149" stroke-width="3.5" stroke-linecap="round"/>
-            <line x1="12" y1="-12" x2="-12" y2="12" stroke="#f85149" stroke-width="3.5" stroke-linecap="round"/>
-            <!-- Sparkles -->
-            <circle cx="0" cy="0" r="3" fill="#ff7b72">
-              <animate attributeName="opacity" values="0.2;1;0.2" dur="0.6s" repeatCount="indefinite"/>
-            </circle>
-          </g>
-
-          <!-- Right Cut Line (Dormant) -->
-          <circle cx="300" cy="90" r="10" fill="#161b22" stroke="#484f58" stroke-width="2"/>
-          <line x1="300" y1="90" x2="420" y2="90" stroke="#21262d" stroke-width="3" stroke-dasharray="4 4"/>
-
-          <!-- Label -->
-          <rect x="150" y="32" width="200" height="22" rx="4" fill="#161b22" stroke="#f85149" stroke-width="1"/>
-          <text x="250" y="47" text-anchor="middle" fill="#ff7b72" font-size="10.5" font-family="monospace" font-weight="700" letter-spacing="0.5">[ FEEDBACK LOOP SEVERED ]</text>
-          <text x="250" y="160" text-anchor="middle" fill="#8b949e" font-size="10" font-family="monospace">EMOTIONAL FLOW TO PAST PATTERN: 0%</text>
-        </svg>
-      `;
-    } else if (idx === 2) {
-      // Stage 3: Thermal Burn Reactor Core (Zero-Point Reset)
-      return `
-        <svg class="fe-visual-svg" viewBox="0 0 500 180">
-          <defs>
-            <radialGradient id="plasmaGrad" cx="50%" cy="50%" r="50%">
-              <stop offset="0%" stop-color="#fff" stop-opacity="1"/>
-              <stop offset="25%" stop-color="#fbbf24" stop-opacity="0.9"/>
-              <stop offset="60%" stop-color="#ea580c" stop-opacity="0.75"/>
-              <stop offset="100%" stop-color="#090d12" stop-opacity="0"/>
-            </radialGradient>
-          </defs>
-
-          <!-- Reactor Containment Rings -->
-          <circle cx="250" cy="90" r="68" fill="none" stroke="#21262d" stroke-width="2"/>
-          <circle cx="250" cy="90" r="54" fill="url(#plasmaGrad)"/>
-
-          <!-- Thermal Core Swirling Flame Engine -->
-          <g style="transform-origin: 250px 90px; animation: coreThermal 1.5s ease-in-out infinite;">
-            <path d="M250 50 C264 70 240 78 268 98 C280 112 262 125 250 125 C238 125 220 112 232 98 C260 78 236 70 250 50 Z" fill="#ffedd5"/>
-          </g>
-
-          <!-- Rising Embers & Ash Particles -->
-          <circle cx="225" cy="80" r="2.5" fill="#fde047" style="animation: emberRise 1.1s ease-out infinite;"/>
-          <circle cx="270" cy="90" r="3" fill="#fb923c" style="animation: emberRise 1.4s ease-out infinite 0.3s;"/>
-          <circle cx="245" cy="70" r="2" fill="#fed7aa" style="animation: emberRise 0.9s ease-out infinite 0.6s;"/>
-          <circle cx="285" cy="75" r="2.5" fill="#f97316" style="animation: emberRise 1.3s ease-out infinite 0.2s;"/>
-
-          <!-- Status Bar -->
-          <rect x="140" y="145" width="220" height="22" rx="4" fill="#161b22" stroke="#ea580c" stroke-width="1"/>
-          <text x="250" y="160" text-anchor="middle" fill="#fb923c" font-size="10.5" font-family="monospace" font-weight="700" letter-spacing="0.5">IGNITION ACTIVE · BOATS BURNED</text>
-        </svg>
-      `;
-    } else {
-      // Stage 4: Forward Momentum Surge Vector
-      return `
-        <svg class="fe-visual-svg" viewBox="0 0 500 180">
-          <defs>
-            <linearGradient id="surgeGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stop-color="#161b22"/>
-              <stop offset="40%" stop-color="#238636"/>
-              <stop offset="100%" stop-color="#3fb950"/>
-            </linearGradient>
-          </defs>
-
-          <!-- Acceleration Speed Rails -->
-          <line x1="60" y1="65" x2="400" y2="65" stroke="#21262d" stroke-width="1.5" stroke-dasharray="10 15"/>
-          <line x1="60" y1="115" x2="400" y2="115" stroke="#21262d" stroke-width="1.5" stroke-dasharray="10 15"/>
-
-          <!-- High-Energy Surge Vector -->
-          <line x1="70" y1="90" x2="390" y2="90" stroke="url(#surgeGrad)" stroke-width="4" stroke-dasharray="12 6" style="animation: circuitFlow 0.5s linear infinite;"/>
-          <polygon points="410,90 385,80 385,100" fill="#3fb950"/>
-
-          <!-- Kinetic Orb -->
-          <g transform="translate(250, 90)">
-            <circle cx="0" cy="0" r="26" fill="#0d1117" stroke="#3fb950" stroke-width="2.5"/>
-            <circle cx="0" cy="0" r="18" fill="rgba(46, 160, 67, 0.2)"/>
-            <path d="M-6 0 L-1 5 L9 -5" fill="none" stroke="#3fb950" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-          </g>
-
-          <rect x="140" y="24" width="220" height="22" rx="4" fill="#161b22" stroke="#238636" stroke-width="1"/>
-          <text x="250" y="39" text-anchor="middle" fill="#3fb950" font-size="10.5" font-family="monospace" font-weight="700" letter-spacing="0.5">NEW VECTOR LOCKED · SERVO ACTIVE</text>
-          <text x="250" y="160" text-anchor="middle" fill="#8b949e" font-size="10.5" font-family="monospace">100% FORWARD MOMENTUM</text>
-        </svg>
-      `;
+    if (canvasAnimId) {
+      cancelAnimationFrame(canvasAnimId);
+      canvasAnimId = null;
     }
+
+    let frameCount = 0;
+
+    function draw() {
+      ctx.clearRect(0, 0, w, h);
+      frameCount++;
+
+      if (stepIdx === 0) {
+        // STEP 1: Realistic Desk & Note Paper
+        // Warm wooden desk surface
+        const grad = ctx.createLinearGradient(0, 0, 0, h);
+        grad.addColorStop(0, "#2c221e");
+        grad.addColorStop(1, "#1c1512");
+        ctx.fillStyle = grad;
+        ctx.fillRect(0, 0, w, h);
+
+        // Realistic Notebook / Paper pad in center
+        const pw = Math.min(260, w - 60);
+        const ph = 140;
+        const px = (w - pw) / 2;
+        const py = (h - ph) / 2;
+
+        // Paper shadow
+        ctx.fillStyle = "rgba(0, 0, 0, 0.4)";
+        ctx.fillRect(px + 4, py + 6, pw, ph);
+
+        // Paper sheet
+        ctx.fillStyle = "#faf6ed";
+        ctx.fillRect(px, py, pw, ph);
+
+        // Top paper binder strip
+        ctx.fillStyle = "#a23e26";
+        ctx.fillRect(px, py, pw, 10);
+
+        // Realistic notebook ruled lines
+        ctx.strokeStyle = "#e5dfd3";
+        ctx.lineWidth = 1;
+        for (let y = py + 30; y < py + ph - 10; y += 18) {
+          ctx.beginPath();
+          ctx.moveTo(px + 15, y);
+          ctx.lineTo(px + pw - 15, y);
+          ctx.stroke();
+        }
+
+        // Handwritten text simulation line
+        ctx.strokeStyle = "#403830";
+        ctx.lineWidth = 2;
+        ctx.lineCap = "round";
+        const textProgress = Math.min(1, (frameCount % 120) / 70);
+        ctx.beginPath();
+        ctx.moveTo(px + 20, py + 48);
+        ctx.lineTo(px + 20 + (pw - 60) * textProgress, py + 48);
+        ctx.stroke();
+
+        // Realistic Pen laying beside paper
+        const penX = px + pw + 12;
+        if (penX + 8 < w) {
+          ctx.fillStyle = "#8a7d6e";
+          ctx.fillRect(penX, py + 20, 5, 80);
+          ctx.fillStyle = "#1c1512";
+          ctx.fillRect(penX, py + 10, 5, 10);
+        }
+
+        // Label
+        ctx.fillStyle = "#e5ded4";
+        ctx.font = "600 12px 'DM Sans', sans-serif";
+        ctx.textAlign = "center";
+        ctx.fillText("Secarik Kertas Catatan: Tuliskan Bebanmu", w / 2, h - 16);
+
+      } else if (stepIdx === 1) {
+        // STEP 2: Paper crumpled into a ball, ready to be thrown
+        const grad = ctx.createLinearGradient(0, 0, 0, h);
+        grad.addColorStop(0, "#241c19");
+        grad.addColorStop(1, "#14100e");
+        ctx.fillStyle = grad;
+        ctx.fillRect(0, 0, w, h);
+
+        // Paper ball in center with subtle floating bob
+        const cx = w / 2;
+        const cy = h / 2 + Math.sin(frameCount * 0.05) * 5;
+
+        // Shadow under ball
+        ctx.fillStyle = "rgba(0, 0, 0, 0.35)";
+        ctx.beginPath();
+        ctx.ellipse(cx, cy + 34, 30, 8, 0, 0, Math.PI * 2);
+        ctx.fill();
+
+        // Crumpled Paper Ball
+        ctx.fillStyle = "#f5efe3";
+        ctx.beginPath();
+        ctx.arc(cx, cy, 26, 0, Math.PI * 2);
+        ctx.fill();
+
+        // Crumple folds & creases
+        ctx.strokeStyle = "#c4b8a5";
+        ctx.lineWidth = 1.5;
+        ctx.beginPath();
+        ctx.moveTo(cx - 15, cy - 10);
+        ctx.lineTo(cx + 5, cy - 2);
+        ctx.lineTo(cx + 18, cy - 14);
+        ctx.moveTo(cx - 18, cy + 8);
+        ctx.lineTo(cx - 4, cy + 2);
+        ctx.lineTo(cx + 14, cy + 12);
+        ctx.moveTo(cx - 2, cy - 20);
+        ctx.lineTo(cx + 8, cy + 6);
+        ctx.stroke();
+
+        // Severing scissors / release icon
+        ctx.fillStyle = "#e5ded4";
+        ctx.font = "600 12px 'DM Sans', sans-serif";
+        ctx.textAlign = "center";
+        ctx.fillText("Kertas Telah Digulung: Siap Dilepaskan ke Api", w / 2, h - 16);
+
+      } else if (stepIdx === 2) {
+        // STEP 3: Realistic Warm Campfire & Burning Ash (The Real Core of Video 18)
+        // Dark Night / Gathering Atmosphere
+        ctx.fillStyle = "#120f0d";
+        ctx.fillRect(0, 0, w, h);
+
+        const cx = w / 2;
+        const baseCy = h - 45;
+
+        // Campfire Wooden Logs at bottom
+        ctx.fillStyle = "#3d271d";
+        ctx.beginPath();
+        ctx.ellipse(cx - 30, baseCy, 35, 10, -0.2, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.beginPath();
+        ctx.ellipse(cx + 30, baseCy, 35, 10, 0.2, 0, Math.PI * 2);
+        ctx.fill();
+
+        // Fire Glow Gradient
+        const glow = ctx.createRadialGradient(cx, baseCy - 30, 10, cx, baseCy - 30, 110);
+        glow.addColorStop(0, "rgba(255, 140, 20, 0.45)");
+        glow.addColorStop(0.5, "rgba(220, 60, 10, 0.15)");
+        glow.addColorStop(1, "rgba(0, 0, 0, 0)");
+        ctx.fillStyle = glow;
+        ctx.fillRect(cx - 120, baseCy - 140, 240, 160);
+
+        // Natural Organic Flame Layers
+        const f1 = Math.sin(frameCount * 0.12) * 8;
+        const f2 = Math.cos(frameCount * 0.15) * 6;
+
+        // Outer Flame (Red-Orange)
+        ctx.fillStyle = "#e64a19";
+        ctx.beginPath();
+        ctx.moveTo(cx - 36, baseCy);
+        ctx.quadraticCurveTo(cx - 40, baseCy - 60, cx - 10 + f1, baseCy - 95);
+        ctx.quadraticCurveTo(cx + 10, baseCy - 60, cx + 5 + f2, baseCy - 110);
+        ctx.quadraticCurveTo(cx + 35, baseCy - 55, cx + 36, baseCy);
+        ctx.closePath();
+        ctx.fill();
+
+        // Mid Flame (Golden Amber)
+        ctx.fillStyle = "#f57c00";
+        ctx.beginPath();
+        ctx.moveTo(cx - 24, baseCy);
+        ctx.quadraticCurveTo(cx - 25, baseCy - 45, cx - 5 + f2, baseCy - 80);
+        ctx.quadraticCurveTo(cx + 8, baseCy - 50, cx + 2 + f1, baseCy - 90);
+        ctx.quadraticCurveTo(cx + 25, baseCy - 40, cx + 24, baseCy);
+        ctx.closePath();
+        ctx.fill();
+
+        // Inner Core Flame (Warm Yellow-White)
+        ctx.fillStyle = "#ffeb3b";
+        ctx.beginPath();
+        ctx.moveTo(cx - 14, baseCy);
+        ctx.quadraticCurveTo(cx - 10, baseCy - 30, cx + f1 * 0.5, baseCy - 55);
+        ctx.quadraticCurveTo(cx + 10, baseCy - 30, cx + 14, baseCy);
+        ctx.closePath();
+        ctx.fill();
+
+        // Realistic Rising Embers / Sparks (Particles)
+        if (particles.length < 35 && Math.random() < 0.6) {
+          particles.push({
+            x: cx + (Math.random() - 0.5) * 40,
+            y: baseCy - 20,
+            vx: (Math.random() - 0.5) * 1.5,
+            vy: -1.2 - Math.random() * 2,
+            size: 1 + Math.random() * 2.5,
+            life: 1,
+            decay: 0.012 + Math.random() * 0.015,
+            color: Math.random() > 0.4 ? "#ffb300" : "#ff7043"
+          });
+        }
+
+        for (let i = particles.length - 1; i >= 0; i--) {
+          const p = particles[i];
+          p.x += p.vx;
+          p.y += p.vy;
+          p.life -= p.decay;
+
+          if (p.life <= 0 || p.y < 10) {
+            particles.splice(i, 1);
+            continue;
+          }
+
+          ctx.fillStyle = p.color;
+          ctx.globalAlpha = p.life;
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+          ctx.fill();
+          ctx.globalAlpha = 1;
+        }
+
+        // Burning Status Label
+        ctx.fillStyle = "#fce8d5";
+        ctx.font = "600 12px 'DM Sans', sans-serif";
+        ctx.textAlign = "center";
+        ctx.fillText("Api Unggun: Beban Terbakar Jadi Abu, Opsi Mundur Dihapus", w / 2, 26);
+
+      } else {
+        // STEP 4: Clean Desk with Steaming Coffee & Focused Work Screen
+        const grad = ctx.createLinearGradient(0, 0, 0, h);
+        grad.addColorStop(0, "#211c19");
+        grad.addColorStop(1, "#161311");
+        ctx.fillStyle = grad;
+        ctx.fillRect(0, 0, w, h);
+
+        const cx = w / 2;
+
+        // Clean laptop in center
+        const lw = Math.min(220, w - 80);
+        const lh = 105;
+        const lx = cx - lw / 2;
+        const ly = 40;
+
+        // Laptop base
+        ctx.fillStyle = "#8a8175";
+        ctx.fillRect(lx - 12, ly + lh - 6, lw + 24, 8);
+
+        // Laptop screen bezel
+        ctx.fillStyle = "#2d2621";
+        ctx.fillRect(lx, ly, lw, lh - 6);
+
+        // Laptop screen active display (clean document)
+        ctx.fillStyle = "#fdfbf7";
+        ctx.fillRect(lx + 8, ly + 8, lw - 16, lh - 22);
+
+        // Clean text document lines on screen
+        ctx.fillStyle = "#286144";
+        ctx.fillRect(lx + 16, ly + 16, 50, 6); // header
+
+        ctx.fillStyle = "#d0c7b9";
+        for (let y = ly + 28; y < ly + lh - 22; y += 9) {
+          const lineW = (y % 18 === 0) ? (lw - 48) : (lw - 65);
+          ctx.fillRect(lx + 16, y, lineW, 4);
+        }
+
+        // Steaming Coffee Cup to the right
+        const cupX = lx + lw + 18;
+        if (cupX + 16 < w) {
+          ctx.fillStyle = "#e8e1d5";
+          ctx.fillRect(cupX, ly + lh - 26, 16, 20);
+          // Steam wisps
+          ctx.strokeStyle = "rgba(240, 230, 215, 0.4)";
+          ctx.lineWidth = 1.5;
+          const sOff = Math.sin(frameCount * 0.08) * 3;
+          ctx.beginPath();
+          ctx.moveTo(cupX + 8, ly + lh - 30);
+          ctx.quadraticCurveTo(cupX + 8 + sOff, ly + lh - 42, cupX + 8, ly + lh - 50);
+          ctx.stroke();
+        }
+
+        // Status
+        ctx.fillStyle = "#d5e8dc";
+        ctx.font = "600 12px 'DM Sans', sans-serif";
+        ctx.textAlign = "center";
+        ctx.fillText("Meja Bersih, Fokus Penuh: Mulai 5 Menit Pertama Sekarang", w / 2, h - 16);
+      }
+
+      canvasAnimId = requestAnimationFrame(draw);
+    }
+
+    draw();
   }
 
-  // Format seconds to mm:ss
   function formatTime(s) {
     const m = Math.floor(s / 60);
     const rem = s % 60;
     return `${m}:${rem < 10 ? "0" : ""}${rem}`;
   }
 
-  // Master Render Function
+  // Master Render
   function render() {
-    const currentPhase = phases[currentStep];
-    const progressPct = ((currentStep + 1) / phases.length) * 100;
+    const s = steps[currentStep];
+    const progressPercent = ((currentStep + 1) / steps.length) * 100;
     const isCompleted = pState.completed;
 
     host.innerHTML = `
-      <div class="fe-content">
-        <!-- Header -->
-        <div class="fe-header">
-          <div class="fe-header-left">
-            <div class="fe-badge-row">
-              <span class="fe-live-dot"></span>
-              <span class="fe-badge-text">Interactive Framework · Materi 18. Bakar</span>
-              <span class="fe-version-tag">SERVO-V2</span>
+      <!-- Header -->
+      <div class="rf-header">
+        <div class="rf-header-text">
+          <div class="rf-badge">
+            <span class="rf-badge-dot"></span>
+            Framework Nyata · Materi 18. Bakar
+          </div>
+          <h3 class="rf-title">Protokol Bakar & Eksekusi Meja Kerja</h3>
+          <p class="rf-subtitle">
+            Berdasarkan latihan riil di video: tuliskan beban nyata di secarik kertas, pisahkan dari dirimu, bakar hingga habis sebagai simbol pelepasan tanpa jalan mundur, lalu langsung mulai aksi 5 menit di mejamu.
+          </p>
+        </div>
+        <button class="rf-sim-btn ${isSimulating ? "active" : ""}" id="rfSimBtn">
+          <span>${isSimulating ? "⏸ Jeda Alur" : "▶ Simulasi Langkah"}</span>
+        </button>
+      </div>
+
+      <!-- 4-Step Stepper Cards -->
+      <div class="rf-stepper" role="tablist">
+        ${steps.map((st, i) => `
+          <div class="rf-step-card ${currentStep === i ? "active" : ""} ${i < currentStep || isCompleted ? "done" : ""}" data-step="${i}" role="tab" aria-selected="${currentStep === i}">
+            <div class="rf-step-card-top">
+              <span class="rf-step-num">${st.num} / ${st.tag}</span>
+              <span class="rf-step-tag">
+                ${i < currentStep || isCompleted ? "SELESAI ✓" : (currentStep === i ? "AKTIF" : "ANTRI")}
+              </span>
             </div>
-            <h3 class="fe-title">The Servo Reset & Ignition Protocol</h3>
-            <p class="fe-subtitle">
-              Sistem operasional dekopling mental Mardigu Wowiek: diagnosa glitch, putus loop emosi, reset opsi mundur ke titik nol, dan eksekusi aksi nyata tanpa mengetik.
-            </p>
+            <div class="rf-step-name">${st.name}</div>
+            <div class="rf-step-desc">${st.desc}</div>
           </div>
-          <div class="fe-controls-top">
-            <button class="fe-btn-sim ${isSimulating ? "active" : ""}" id="feSimBtn">
-              <span>${isSimulating ? "⏸ Jeda Siklus" : "▶ Simulasi Alur"}</span>
-            </button>
-          </div>
+        `).join("")}
+      </div>
+
+      <!-- Progress Track -->
+      <div class="rf-track">
+        <div class="rf-track-fill" style="width: ${progressPercent}%;"></div>
+      </div>
+
+      <!-- Main Stage Interaction Panel -->
+      <div class="rf-main-stage">
+        <!-- Visual Canvas Arena -->
+        <div class="rf-visual-box">
+          <canvas id="rfCanvas" class="rf-visual-canvas"></canvas>
         </div>
 
-        <!-- 4-Stage Architectural Pipeline -->
-        <div class="fe-pipeline" role="tablist">
-          ${phases.map((ph, i) => `
-            <div class="fe-node ${currentStep === i ? "active" : ""} ${i < currentStep || isCompleted ? "done" : ""}" data-step="${i}" role="tab" aria-selected="${currentStep === i}">
-              <div class="fe-node-top">
-                <span class="fe-node-num">${ph.num} / ${ph.badge}</span>
-                <span class="fe-node-state">
-                  ${i < currentStep || isCompleted ? "DONE ✓" : (currentStep === i ? "ACTIVE" : "QUEUED")}
-                </span>
+        <div class="rf-stage-header">
+          <h4 class="rf-stage-title">${s.title}</h4>
+          <span class="rf-stage-phase-label">${s.phaseLabel}</span>
+        </div>
+
+        <p class="rf-stage-instruction">${s.instruction}</p>
+
+        <!-- 3 Ready-to-Tap Options Cards -->
+        <div class="rf-cards-grid" role="group">
+          ${s.cards.map((c, idx) => `
+            <div class="rf-item-card ${selectedCards[currentStep] === idx ? "selected" : ""}" data-card="${idx}">
+              <div class="rf-item-card-title">
+                <span style="font-size: 11px; opacity: 0.7;">[${idx + 1}]</span>
+                ${c.title}
               </div>
-              <div class="fe-node-name">${ph.name}</div>
-              <div class="fe-node-sub">${ph.sub}</div>
+              <div class="rf-item-card-desc">${c.desc}</div>
             </div>
           `).join("")}
         </div>
 
-        <!-- Energy Conduit Progress Bar -->
-        <div class="fe-connector-bar">
-          <div class="fe-connector-progress" style="width: ${progressPct}%;"></div>
-        </div>
-
-        <!-- Main Display Card -->
-        <div class="fe-stage-card">
-          <!-- Live Animation Visual Arena -->
-          <div class="fe-visual-arena">
-            ${renderVisualAnimation(currentStep)}
-          </div>
-
-          <!-- Step Info -->
-          <div class="fe-step-meta">
-            <h4 class="fe-step-title">${currentPhase.title}</h4>
-            <span class="fe-step-phase-tag">${currentPhase.phaseTag}</span>
-          </div>
-
-          <p class="fe-step-prompt">${currentPhase.prompt}</p>
-
-          <!-- 1-Tap Option Pills -->
-          <div class="fe-pills-grid" role="group">
-            ${currentPhase.options.map((opt, optIdx) => `
-              <div class="fe-pill ${selectedOpts[currentStep] === optIdx ? "selected" : ""}" data-opt="${optIdx}">
-                <div class="fe-pill-title">
-                  <span style="font-size: 11px; opacity: 0.8;">[${optIdx + 1}]</span>
-                  ${opt.title}
-                </div>
-                <div class="fe-pill-desc">${opt.desc}</div>
-              </div>
-            `).join("")}
-          </div>
-
-          <!-- Optional Focus Timer on Phase 4 -->
-          ${currentStep === 3 ? `
-            <div class="fe-timer-box">
-              <div class="fe-timer-info">
-                <span class="fe-timer-label">Timer Fokus Praktik (Langsung Eksekusi)</span>
-                <span class="fe-timer-digits" id="feTimerDisplay">${formatTime(timerSec)}</span>
-              </div>
-              <div class="fe-timer-btns">
-                <button class="fe-btn-timer" id="feTimerToggle">${timerActive ? "Jeda" : "Mulai Timer"}</button>
-                <button class="fe-btn-timer" id="feTimerReset">Reset</button>
-              </div>
+        <!-- Optional Focus Timer on Step 4 -->
+        ${currentStep === 3 ? `
+          <div class="rf-timer-module">
+            <div class="rf-timer-left">
+              <span class="rf-timer-eyebrow">Stopwatch 5 Menit Pertama (Langsung Mulai)</span>
+              <span class="rf-timer-clock" id="rfTimerClock">${formatTime(timerSec)}</span>
             </div>
-          ` : ""}
+            <div class="rf-timer-controls">
+              <button class="rf-btn-clock" id="rfTimerToggle">${timerActive ? "Jeda Waktu" : "Mulai Stopwatch"}</button>
+              <button class="rf-btn-clock" id="rfTimerReset">Reset 5 Mnt</button>
+            </div>
+          </div>
+        ` : ""}
 
-          <!-- Action & Transition Controls -->
-          <div class="fe-action-bar">
-            <div class="fe-insight-callout">
-              <strong>Prinsip:</strong> ${currentPhase.insight}
-            </div>
-            <div class="fe-btn-group">
-              ${currentStep > 0 ? `<button class="fe-btn-secondary" id="fePrevBtn">← Tahap Sebelumnya</button>` : ""}
-              <button class="fe-btn-primary" id="feNextBtn">
-                ${currentStep === phases.length - 1 ? (isCompleted ? "Tersimpan: Praktik Tuntas ✓" : currentPhase.btnLabel) : currentPhase.btnLabel}
-              </button>
-            </div>
+        <!-- Action Bar -->
+        <div class="rf-action-bar">
+          <div class="rf-insight-text">
+            <strong>Kunci Aksi:</strong> ${s.insight}
+          </div>
+          <div class="rf-action-buttons">
+            ${currentStep > 0 ? `<button class="rf-btn-prev" id="rfPrevBtn">← Kembali</button>` : ""}
+            <button class="rf-btn-next" id="rfNextBtn">
+              ${currentStep === steps.length - 1 ? (isCompleted ? "Tersimpan: Sudah Praktik Nyata ✓" : s.btnLabel) : s.btnLabel}
+            </button>
           </div>
         </div>
       </div>
     `;
 
-    // Bind Event Listeners
-    host.querySelectorAll(".fe-node").forEach(node => {
-      node.onclick = () => {
-        currentStep = Number(node.dataset.step);
+    // Initialize Canvas Visuals
+    setTimeout(() => {
+      initCanvasAnimation(currentStep);
+    }, 10);
+
+    // Event Handlers
+    host.querySelectorAll(".rf-step-card").forEach(card => {
+      card.onclick = () => {
+        currentStep = Number(card.dataset.step);
         isSimulating = false;
-        saveFrameworkState();
+        saveState();
         render();
       };
     });
 
-    host.querySelectorAll(".fe-pill").forEach(pill => {
-      pill.onclick = () => {
-        selectedOpts[currentStep] = Number(pill.dataset.opt);
-        saveFrameworkState();
+    host.querySelectorAll(".rf-item-card").forEach(item => {
+      item.onclick = () => {
+        selectedCards[currentStep] = Number(item.dataset.card);
+        saveState();
         render();
       };
     });
 
-    const nextBtn = host.querySelector("#feNextBtn");
+    const nextBtn = host.querySelector("#rfNextBtn");
     if (nextBtn) {
       nextBtn.onclick = () => {
-        if (currentStep < phases.length - 1) {
+        if (currentStep < steps.length - 1) {
           currentStep++;
-          saveFrameworkState();
+          saveState();
           render();
         } else {
-          // Final Phase Completion
+          // Finish Step 4
           pState.completed = true;
           pState.completedAt = new Date().toISOString();
-          saveFrameworkState();
-          save(); // Trigger global study app save
+          saveState();
+          save(); // Trigger global Ruang Belajar persistence
           render();
-          
-          // Friendly feedback
+
           const notif = document.getElementById("backupStatus");
           if (notif) {
-            notif.textContent = "Framework Servo Reset berhasil dieksekusi dan tersimpan di browser!";
+            notif.textContent = "Langkah nyata berhasil dikonfirmasi dan tersimpan di catatan!";
           }
         }
       };
     }
 
-    const prevBtn = host.querySelector("#fePrevBtn");
+    const prevBtn = host.querySelector("#rfPrevBtn");
     if (prevBtn) {
       prevBtn.onclick = () => {
         if (currentStep > 0) {
           currentStep--;
-          saveFrameworkState();
+          saveState();
           render();
         }
       };
     }
 
-    const simBtn = host.querySelector("#feSimBtn");
+    const simBtn = host.querySelector("#rfSimBtn");
     if (simBtn) {
       simBtn.onclick = () => {
         isSimulating = !isSimulating;
@@ -938,11 +1061,11 @@
       };
     }
 
-    // Timer buttons in phase 4
+    // Step 4 Timer
     if (currentStep === 3) {
-      const timerToggle = host.querySelector("#feTimerToggle");
-      if (timerToggle) {
-        timerToggle.onclick = () => {
+      const toggle = host.querySelector("#rfTimerToggle");
+      if (toggle) {
+        toggle.onclick = () => {
           timerActive = !timerActive;
           if (timerActive) {
             startTimer();
@@ -952,11 +1075,11 @@
           render();
         };
       }
-      const timerReset = host.querySelector("#feTimerReset");
-      if (timerReset) {
-        timerReset.onclick = () => {
+      const resetBtn = host.querySelector("#rfTimerReset");
+      if (resetBtn) {
+        resetBtn.onclick = () => {
           stopTimer();
-          timerSec = 120;
+          timerSec = 300;
           render();
         };
       }
@@ -968,8 +1091,8 @@
     timerInterval = setInterval(() => {
       if (timerSec > 0) {
         timerSec--;
-        const disp = host.querySelector("#feTimerDisplay");
-        if (disp) disp.textContent = formatTime(timerSec);
+        const clock = host.querySelector("#rfTimerClock");
+        if (clock) clock.textContent = formatTime(timerSec);
       } else {
         stopTimer();
         timerActive = false;
@@ -984,32 +1107,31 @@
     timerActive = false;
   }
 
-  function saveFrameworkState() {
+  function saveState() {
     pState.step = currentStep;
-    pState.selectedOpts = selectedOpts;
+    pState.selectedCards = selectedCards;
     pState.timerSeconds = timerSec;
     save();
   }
 
-  let simCycleTimer = null;
   function runSimulationCycle() {
     render();
-    clearTimeout(simCycleTimer);
-    simCycleTimer = setTimeout(() => {
+    clearTimeout(simTimer);
+    simTimer = setTimeout(() => {
       if (!isSimulating) return;
-      currentStep = (currentStep + 1) % phases.length;
-      saveFrameworkState();
+      currentStep = (currentStep + 1) % steps.length;
+      saveState();
       runSimulationCycle();
-    }, 2800);
+    }, 3200);
   }
 
   // Initial render
   render();
 
-  // Also hook into celebrate dialog close
+  // Hook celebrate popup
   const closeCelebrate = document.getElementById("closeCelebrate");
   if (closeCelebrate) {
-    closeCelebrate.textContent = "Buka Framework Bakar";
+    closeCelebrate.textContent = "Buka Protokol Bakar";
     closeCelebrate.onclick = () => {
       document.getElementById("celebrate").close();
       host.scrollIntoView({ behavior: "smooth", block: "start" });
