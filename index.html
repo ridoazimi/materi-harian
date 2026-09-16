@@ -1050,24 +1050,37 @@
                 header.textContent = `${phaseTitle} (${list.length} Video)`;
                 phaseEl.appendChild(header);
 
+                // Group by folder to keep visual hierarchy crystal clear
+                const folderGroups = {};
                 list.forEach(item => {
-                    const isDone = !!completed[item.id];
-                    const isActive = item.id === CURRENT_LESSON_ID;
-
-                    const row = document.createElement('div');
-                    row.className = `lesson-item ${isDone ? 'completed' : ''} ${isActive ? 'active' : ''}`;
-
-                    row.innerHTML = `
-                        <div class="lesson-info">
-                            <span class="lesson-name">${item.title}</span>
-                            <span class="lesson-folder">${item.folder}</span>
-                        </div>
-                        <div class="lesson-check-badge" title="${isDone ? 'Selesai ditonton' : 'Terkunci otomatis'}">
-                            <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                        </div>
-                    `;
-                    phaseEl.appendChild(row);
+                    if (!folderGroups[item.folder]) folderGroups[item.folder] = [];
+                    folderGroups[item.folder].push(item);
                 });
+
+                for (const [folderName, items] of Object.entries(folderGroups)) {
+                    const folderHeader = document.createElement('div');
+                    folderHeader.style.cssText = 'font-size: 11px; font-weight: 700; color: var(--text-secondary); margin-top: 8px; margin-bottom: 2px; padding-left: 2px; text-transform: uppercase; letter-spacing: 0.06em; display: flex; align-items: center; gap: 6px;';
+                    folderHeader.innerHTML = `<span>📁</span> <span>${folderName}</span> <span style="font-family: var(--font-mono); color: var(--text-tertiary); font-weight: 400;">(${items.length})</span>`;
+                    phaseEl.appendChild(folderHeader);
+
+                    items.forEach(item => {
+                        const isDone = !!completed[item.id];
+                        const isActive = item.id === CURRENT_LESSON_ID;
+
+                        const row = document.createElement('div');
+                        row.className = `lesson-item ${isDone ? 'completed' : ''} ${isActive ? 'active' : ''}`;
+
+                        row.innerHTML = `
+                            <div class="lesson-info">
+                                <span class="lesson-name">${item.title}</span>
+                            </div>
+                            <div class="lesson-check-badge" title="${isDone ? 'Selesai ditonton' : 'Terkunci otomatis'}">
+                                <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                            </div>
+                        `;
+                        phaseEl.appendChild(row);
+                    });
+                }
 
                 container.appendChild(phaseEl);
             }
