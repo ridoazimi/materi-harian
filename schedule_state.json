@@ -1,16 +1,23 @@
 {
-  "current_index": 18,
-  "lesson_id": "1hIdh1kfKCutQbzjwJPWhop5Tt8NKWWn2",
-  "title": "19. Kompetensi Sekali Lagi",
+  "current_index": 19,
+  "lesson_id": "1wkKnNCD6MM5mxjTzhBRsPvjnSau8c9-W",
+  "title": "20. Peaceful Place",
   "folder": "1. Servo Mechanism Advanced",
   "phase_name": "Fase 1: Mindset & Subconscious",
-  "updated_at": "2026-09-19T10:20:00+07:00",
+  "updated_at": "2026-09-20T06:36:16.811977",
   "history": [
     {
       "index": 17,
       "lesson_id": "1gBTwktXAuxhnDnsS1W-2KmZJqtnlNump",
       "title": "18. Bakar",
       "date": "2026-09-19"
+    },
+    {
+      "index": 18,
+      "lesson_id": "1hIdh1kfKCutQbzjwJPWhop5Tt8NKWWn2",
+      "title": "19. Kompetensi Sekali Lagi",
+      "date": "2026-09-20"
     }
-  ]
+  ],
+  "last_run_date": "2026-09-20"
 }
