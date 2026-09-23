@@ -1,5 +1,5 @@
 const KEY = "rido_study_hub_v2";
-const TODAY_ID = "1IM3B2wqUPW-oiDoZ4loicikcSBWMVOkR"; // 22. Project Imaginary Lagi
+const TODAY_ID = "1hIdh1kfKCutQbzjwJPWhop5Tt8NKWWn2"; // 19. Kompetensi Sekali Lagi
 const $ = id => document.getElementById(id);
 const video = $("mainVideo");
 const driveFrame = $("driveFrame");
@@ -231,6 +231,7 @@ function setLesson(item) {
     video.hidden = false;
     video.style.display = "block";
     $("nativeControls").style.display = "flex";
+    if ($("driveNotice")) { $("driveNotice").hidden = true; $("driveNotice").style.display = "none"; }
   } else {
     video.pause();
     video.hidden = true;
@@ -240,6 +241,11 @@ function setLesson(item) {
     driveFrame.src = "https://drive.google.com/file/d/" + encodeURIComponent(item.id) + "/preview";
     $("nativeControls").style.display = "none";
     $("duration").textContent = "";
+    if ($("driveNotice")) {
+      $("driveNotice").hidden = false;
+      $("driveNotice").style.display = "flex";
+      $("driveDirectLink").href = "https://drive.google.com/file/d/" + encodeURIComponent(item.id) + "/view";
+    }
   }
 
   refresh();
