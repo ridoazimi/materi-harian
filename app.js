@@ -1,5 +1,5 @@
 const KEY = "rido_study_hub_v2";
-const TODAY_ID = "1wkKnNCD6MM5mxjTzhBRsPvjnSau8c9-W"; // 20. Peaceful Place
+const TODAY_ID = "12fvzSRi1c55jrcOSQjmhJAYu6sSxWKSw"; // 21. Kenalan Dengan Siapa Saja Kalau Berkumpul
 const $ = id => document.getElementById(id);
 const video = $("mainVideo");
 const driveFrame = $("driveFrame");
