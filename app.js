@@ -1,5 +1,5 @@
 const KEY = "rido_study_hub_v2";
-const TODAY_ID = "12fvzSRi1c55jrcOSQjmhJAYu6sSxWKSw"; // 21. Kenalan Dengan Siapa Saja Kalau Berkumpul
+const TODAY_ID = "1IM3B2wqUPW-oiDoZ4loicikcSBWMVOkR"; // 22. Project Imaginary Lagi
 const $ = id => document.getElementById(id);
 const video = $("mainVideo");
 const driveFrame = $("driveFrame");
