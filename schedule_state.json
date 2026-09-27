@@ -1,10 +1,10 @@
 {
-  "current_index": 21,
-  "lesson_id": "1IM3B2wqUPW-oiDoZ4loicikcSBWMVOkR",
-  "title": "22. Project Imaginary Lagi",
-  "folder": "1. Servo Mechanism Advanced",
+  "current_index": 22,
+  "lesson_id": "1Yr-YeY-SvW4psbz56arKymH6zATYZbJX",
+  "title": "1. Pendahuluan",
+  "folder": "2. Special Tambahan dari Bapak Mardigu",
   "phase_name": "Fase 1: Mindset & Subconscious",
-  "updated_at": "2026-09-27T05:04:37.318469",
+  "updated_at": "2026-09-28T05:04:30.630723",
   "history": [
     {
       "index": 17,
@@ -29,7 +29,13 @@
       "lesson_id": "12fvzSRi1c55jrcOSQjmhJAYu6sSxWKSw",
       "title": "21. Kenalan Dengan Siapa Saja Kalau Berkumpul",
       "date": "2026-09-27"
+    },
+    {
+      "index": 21,
+      "lesson_id": "1IM3B2wqUPW-oiDoZ4loicikcSBWMVOkR",
+      "title": "22. Project Imaginary Lagi",
+      "date": "2026-09-28"
     }
   ],
-  "last_run_date": "2026-09-27"
+  "last_run_date": "2026-09-28"
 }
