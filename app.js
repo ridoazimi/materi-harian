@@ -1,5 +1,5 @@
 const KEY = "rido_study_hub_v2";
-const TODAY_ID = "1Yr-YeY-SvW4psbz56arKymH6zATYZbJX"; // 1. Pendahuluan
+const TODAY_ID = "1CNrsXOJEz8saCEl3gIwgN2KFLY7bSP7D"; // 2. Makro Geoekonomi
 const $ = id => document.getElementById(id);
 const video = $("mainVideo");
 const driveFrame = $("driveFrame");
