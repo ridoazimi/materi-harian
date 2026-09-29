@@ -4,10 +4,26 @@ const $ = id => document.getElementById(id);
 const video = $("mainVideo");
 const driveFrame = $("driveFrame");
 
+const KNOWN_LOCAL_VIDEOS = new Set([
+  "1gBTwktXAuxhnDnsS1W-2KmZJqtnlNump", // 18. Bakar
+  "1hIdh1kfKCutQbzjwJPWhop5Tt8NKWWn2", // 19. Kompetensi Sekali Lagi
+  "1wkKnNCD6MM5mxjTzhBRsPvjnSau8c9-W", // 20. Peaceful Place
+  "12fvzSRi1c55jrcOSQjmhJAYu6sSxWKSw", // 21. Kenalan Dengan Siapa Saja
+  "1IM3B2wqUPW-oiDoZ4loicikcSBWMVOkR", // 22. Project Imaginary Lagi
+  "1Yr-YeY-SvW4psbz56arKymH6zATYZbJX", // 1. Pendahuluan
+  "1CNrsXOJEz8saCEl3gIwgN2KFLY7bSP7D", // 2. Makro Geoekonomi
+  "1K5h-RKZK7EvWc0_tdcAZxXF1eIxFTebn"  // 3. Memahami Ekonomi Kerakyatan
+]);
+let availableVideos = new Set(KNOWN_LOCAL_VIDEOS);
+
+function hasLocalVideo(id) {
+  return id === TODAY_ID || availableVideos.has(id);
+}
+
 let currentLesson = {
   id: TODAY_ID,
-  title: "19. Kompetensi Sekali Lagi",
-  folder: "1. Servo Mechanism Advanced",
+  title: "3. Memahami Ekonomi Kerakyatan",
+  folder: "2. Special Tambahan dari Bapak Mardigu",
   phase_name: "Fase 1: Mindset & Subconscious"
 };
 
@@ -64,11 +80,13 @@ function refresh() {
     : total ? count + " dari " + total + " video selesai" : "Memuat kurikulum...";
 
   const isDone = !!state.completedLessons[currentLesson.id];
+  const isLocal = hasLocalVideo(currentLesson.id);
+
   if (isDone) {
     $("watchStatus").textContent = "Selesai ditonton. Progres tercatat.";
     $("watchStatus").className = "done";
   } else {
-    $("watchStatus").textContent = currentLesson.id === TODAY_ID
+    $("watchStatus").textContent = isLocal
       ? "Checklist otomatis setelah video selesai."
       : "Menonton materi kurikulum (Drive Player).";
     $("watchStatus").className = "";
@@ -87,22 +105,18 @@ function refresh() {
   }
 
   const btnMark = $("btnMarkDone");
-  if (currentLesson.id !== TODAY_ID) {
-    btnMark.style.display = "inline-flex";
-    btnMark.textContent = isDone ? "Tandai Belum Selesai" : "Tandai Selesai ✓";
-    btnMark.onclick = () => {
-      state.completedLessons[currentLesson.id] = !state.completedLessons[currentLesson.id];
-      if (state.completedLessons[currentLesson.id] && state.lastDate !== day()) {
-        state.streak = state.lastDate === day(-1) ? state.streak + 1 : 1;
-        state.lastDate = day();
-      }
-      save();
-      refresh();
-      render();
-    };
-  } else {
-    btnMark.style.display = "none";
-  }
+  btnMark.style.display = "inline-flex";
+  btnMark.textContent = isDone ? "Tandai Belum Selesai" : "Tandai Selesai ✓";
+  btnMark.onclick = () => {
+    state.completedLessons[currentLesson.id] = !state.completedLessons[currentLesson.id];
+    if (state.completedLessons[currentLesson.id] && state.lastDate !== day()) {
+      state.streak = state.lastDate === day(-1) ? state.streak + 1 : 1;
+      state.lastDate = day();
+    }
+    save();
+    refresh();
+    render();
+  };
 
   updateWatch();
 }
@@ -131,7 +145,7 @@ function coverage() {
 }
 
 function updateWatch() {
-  if (currentLesson.id !== TODAY_ID) {
+  if (!hasLocalVideo(currentLesson.id)) {
     $("watchPercent").textContent = state.completedLessons[currentLesson.id] ? "100% (Selesai)" : "Drive Player";
     return;
   }
@@ -147,7 +161,7 @@ video.addEventListener("playing", resetClock);
 video.addEventListener("seeking", () => { lastTime = null; lastWall = null; });
 video.addEventListener("seeked", resetClock);
 video.addEventListener("timeupdate", () => {
-  if (currentLesson.id !== TODAY_ID) return;
+  if (!hasLocalVideo(currentLesson.id)) return;
   const now = performance.now(), t = video.currentTime;
   if (!video.paused && !video.seeking && lastTime !== null && lastWall !== null) {
     const delta = t - lastTime, allowed = (now - lastWall) / 1000 * video.playbackRate + 0.6;
@@ -163,7 +177,7 @@ video.addEventListener("timeupdate", () => {
 video.addEventListener("pause", save);
 
 video.addEventListener("loadedmetadata", () => {
-  if (currentLesson.id !== TODAY_ID) return;
+  if (!hasLocalVideo(currentLesson.id)) return;
   $("duration").textContent = Math.ceil(video.duration / 60) + " menit";
   const position = Number(state.positions[currentLesson.id]);
   if (position > 0 && position < video.duration - 3) video.currentTime = position;
@@ -177,13 +191,13 @@ video.addEventListener("loadedmetadata", () => {
 });
 
 video.addEventListener("error", () => {
-  if (currentLesson.id === TODAY_ID) $("videoError").hidden = false;
+  if (hasLocalVideo(currentLesson.id)) $("videoError").hidden = false;
 });
 
 $("retryVideo").onclick = () => video.load();
 
 video.addEventListener("ended", () => {
-  if (currentLesson.id !== TODAY_ID) return;
+  if (!hasLocalVideo(currentLesson.id)) return;
   if (state.completedLessons[currentLesson.id]) return;
   if (coverage() < 0.98) {
     $("watchStatus").textContent = "Ada bagian yang terlewat. Tonton bagian itu agar checklist tercatat.";
@@ -224,23 +238,34 @@ function setLesson(item) {
   $("note").value = typeof state.notes[item.id] === "string" ? state.notes[item.id] : "";
   $("errorDriveLink").href = "https://drive.google.com/file/d/" + encodeURIComponent(item.id) + "/view";
 
-  if (item.id === TODAY_ID) {
+  const isLocal = hasLocalVideo(item.id);
+
+  if (isLocal) {
     driveFrame.hidden = true;
     driveFrame.style.display = "none";
     driveFrame.src = "";
+    if ($("driveNotice")) { $("driveNotice").hidden = true; $("driveNotice").style.display = "none"; }
+    $("videoError").hidden = true;
+
+    const targetSrc = (item.id === TODAY_ID) ? "today.mp4" : ("videos/" + encodeURIComponent(item.id) + ".mp4");
+    if (!video.src.endsWith(targetSrc)) {
+      video.pause();
+      video.src = targetSrc;
+      video.load();
+    }
     video.hidden = false;
     video.style.display = "block";
     $("nativeControls").style.display = "flex";
-    if ($("driveNotice")) { $("driveNotice").hidden = true; $("driveNotice").style.display = "none"; }
   } else {
     video.pause();
     video.hidden = true;
     video.style.display = "none";
+    $("nativeControls").style.display = "none";
+    $("duration").textContent = "";
+
     driveFrame.hidden = false;
     driveFrame.style.display = "block";
     driveFrame.src = "https://drive.google.com/file/d/" + encodeURIComponent(item.id) + "/preview";
-    $("nativeControls").style.display = "none";
-    $("duration").textContent = "";
     if ($("driveNotice")) {
       $("driveNotice").hidden = false;
       $("driveNotice").style.display = "flex";
@@ -321,6 +346,18 @@ async function loadLessons() {
   loadState = "loading";
   render();
   try {
+    try {
+      const avRes = await fetch("available_videos.json");
+      if (avRes.ok) {
+        const avList = await avRes.json();
+        if (Array.isArray(avList)) {
+          avList.forEach(id => availableVideos.add(id));
+        }
+      }
+    } catch (e) {
+      console.warn("Could not load available_videos.json:", e);
+    }
+
     const r = await fetch("curriculum_lessons.json");
     if (!r.ok) throw new Error("HTTP " + r.status);
     const data = await r.json();
@@ -385,6 +422,7 @@ function render() {
         const done = !!state.completedLessons[item.id];
         const current = item.id === currentLesson.id;
         const isToday = item.id === TODAY_ID;
+        const isLocal = hasLocalVideo(item.id);
         
         const row = el("div", "row" + (done ? " completed" : "") + (current ? " current" : ""));
         if (current) row.setAttribute("aria-current", "true");
@@ -407,7 +445,11 @@ function render() {
         row.append(check);
 
         const nameEl = el("div", "row-name", item.title);
-        if (isToday) nameEl.append(el("small", "", "Materi hari ini (Lokal)"));
+        if (isToday) {
+          nameEl.append(el("small", "", "Materi hari ini"));
+        } else if (isLocal) {
+          nameEl.append(el("small", "", "Tersedia"));
+        }
         row.append(nameEl);
 
         const actions = el("div", "row-actions");
