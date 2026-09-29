@@ -1,5 +1,5 @@
 const KEY = "rido_study_hub_v2";
-const TODAY_ID = "1CNrsXOJEz8saCEl3gIwgN2KFLY7bSP7D"; // 2. Makro Geoekonomi
+const TODAY_ID = "1K5h-RKZK7EvWc0_tdcAZxXF1eIxFTebn"; // 3. Memahami Ekonomi Kerakyatan
 const $ = id => document.getElementById(id);
 const video = $("mainVideo");
 const driveFrame = $("driveFrame");

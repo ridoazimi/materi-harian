@@ -1,10 +1,10 @@
 {
-  "current_index": 23,
-  "lesson_id": "1CNrsXOJEz8saCEl3gIwgN2KFLY7bSP7D",
-  "title": "2. Makro Geoekonomi",
+  "current_index": 24,
+  "lesson_id": "1K5h-RKZK7EvWc0_tdcAZxXF1eIxFTebn",
+  "title": "3. Memahami Ekonomi Kerakyatan",
   "folder": "2. Special Tambahan dari Bapak Mardigu",
   "phase_name": "Fase 1: Mindset & Subconscious",
-  "updated_at": "2026-09-29T05:06:17.971800",
+  "updated_at": "2026-09-30T05:04:55.626820",
   "history": [
     {
       "index": 17,
@@ -41,7 +41,13 @@
       "lesson_id": "1Yr-YeY-SvW4psbz56arKymH6zATYZbJX",
       "title": "1. Pendahuluan",
       "date": "2026-09-29"
+    },
+    {
+      "index": 23,
+      "lesson_id": "1CNrsXOJEz8saCEl3gIwgN2KFLY7bSP7D",
+      "title": "2. Makro Geoekonomi",
+      "date": "2026-09-30"
     }
   ],
-  "last_run_date": "2026-09-29"
+  "last_run_date": "2026-09-30"
 }
