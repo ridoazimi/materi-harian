@@ -1,5 +1,5 @@
 const KEY = "rido_study_hub_v2";
-const TODAY_ID = "1qzbOHqsho_5CgQsJJdjwAxqFfXHfV4DB"; // 4. Selesaikan Hutang
+const TODAY_ID = "1_svhyGiNhOle0jasqk_3YdMrcvuKqGAO"; // 5. Update Terus Dengan Berita Luar Negeri
 const $ = id => document.getElementById(id);
 const video = $("mainVideo");
 const driveFrame = $("driveFrame");
