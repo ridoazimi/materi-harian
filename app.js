@@ -1,5 +1,5 @@
 const KEY = "rido_study_hub_v2";
-const TODAY_ID = "1_svhyGiNhOle0jasqk_3YdMrcvuKqGAO"; // 5. Update Terus Dengan Berita Luar Negeri
+const TODAY_ID = "1j_QC_PLMHrm_r_UjXDAoZtDS_K6r9-cQ"; // 6. Perhatikan Musim di saat  Menyalip
 const $ = id => document.getElementById(id);
 const video = $("mainVideo");
 const driveFrame = $("driveFrame");
