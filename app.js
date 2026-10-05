@@ -1,5 +1,5 @@
 const KEY = "rido_study_hub_v2";
-const TODAY_ID = "1j_QC_PLMHrm_r_UjXDAoZtDS_K6r9-cQ"; // 6. Perhatikan Musim di saat  Menyalip
+const TODAY_ID = "1AoHPBwP_kmkGJaEONJ_j1bkbCn3PG47O"; // 7. Loyalitas & Militansi
 const $ = id => document.getElementById(id);
 const video = $("mainVideo");
 const driveFrame = $("driveFrame");
