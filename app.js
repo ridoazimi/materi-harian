@@ -1,5 +1,5 @@
 const KEY = "rido_study_hub_v2";
-const TODAY_ID = "1AoHPBwP_kmkGJaEONJ_j1bkbCn3PG47O"; // 7. Loyalitas & Militansi
+const TODAY_ID = "11ozjUhdyqLgrzbyV83BILeD-OB47OjBS"; // 8. Pembiayaan Gaya Baru
 const $ = id => document.getElementById(id);
 const video = $("mainVideo");
 const driveFrame = $("driveFrame");
