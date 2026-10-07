@@ -1,5 +1,5 @@
 const KEY = "rido_study_hub_v2";
-const TODAY_ID = "11ozjUhdyqLgrzbyV83BILeD-OB47OjBS"; // 8. Pembiayaan Gaya Baru
+const TODAY_ID = "1m9Aq87tHgewZzMOLT7MVpk3hydd9KM6q"; // 9. Strategy Bisnis Untuk Menjadi Terdepan
 const $ = id => document.getElementById(id);
 const video = $("mainVideo");
 const driveFrame = $("driveFrame");
