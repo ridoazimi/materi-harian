@@ -1,5 +1,5 @@
 const KEY = "rido_study_hub_v2";
-const TODAY_ID = "1m9Aq87tHgewZzMOLT7MVpk3hydd9KM6q"; // 9. Strategy Bisnis Untuk Menjadi Terdepan
+const TODAY_ID = "19CkKEotqpjGqQW6G2RVGnyWBBDA5vLmM"; // 10. Memahami Bisnis Paska Corona
 const $ = id => document.getElementById(id);
 const video = $("mainVideo");
 const driveFrame = $("driveFrame");
