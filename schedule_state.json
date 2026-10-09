@@ -1,10 +1,10 @@
 {
-  "current_index": 31,
-  "lesson_id": "19CkKEotqpjGqQW6G2RVGnyWBBDA5vLmM",
-  "title": "10. Memahami Bisnis Paska Corona",
+  "current_index": 32,
+  "lesson_id": "17TE5Zu6erE77nyWa3VUk0q_tWolv-e7N",
+  "title": "11. Riding The Wave",
   "folder": "2. Special Tambahan dari Bapak Mardigu",
   "phase_name": "Fase 1: Mindset & Subconscious",
-  "updated_at": "2026-10-09T05:04:41.593924",
+  "updated_at": "2026-10-10T05:03:37.815858",
   "history": [
     {
       "index": 17,
@@ -89,7 +89,13 @@
       "lesson_id": "1m9Aq87tHgewZzMOLT7MVpk3hydd9KM6q",
       "title": "9. Strategy Bisnis Untuk Menjadi Terdepan",
       "date": "2026-10-09"
+    },
+    {
+      "index": 31,
+      "lesson_id": "19CkKEotqpjGqQW6G2RVGnyWBBDA5vLmM",
+      "title": "10. Memahami Bisnis Paska Corona",
+      "date": "2026-10-10"
     }
   ],
-  "last_run_date": "2026-10-09"
+  "last_run_date": "2026-10-10"
 }
