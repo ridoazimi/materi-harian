@@ -1,5 +1,5 @@
 const KEY = "rido_study_hub_v2";
-const TODAY_ID = "17TE5Zu6erE77nyWa3VUk0q_tWolv-e7N"; // 11. Riding The Wave
+const TODAY_ID = "1QhDaeEjlQWkp_YK9gXqUQ-7ybHz7v1VC"; // 12. Bisnis Model
 const $ = id => document.getElementById(id);
 const video = $("mainVideo");
 const driveFrame = $("driveFrame");
