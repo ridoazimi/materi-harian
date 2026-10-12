@@ -1,10 +1,10 @@
 {
-  "current_index": 34,
-  "lesson_id": "1XIf3TTXfulezDeSOnBJ_2gf8BZ-ag1VY",
-  "title": "13. Bisnis Model Sekali Lagi",
+  "current_index": 35,
+  "lesson_id": "1bHsxlIQs05sgsNBOjdeUUCpVHEaUpVFN",
+  "title": "14. Bisnis Semudah 123",
   "folder": "2. Special Tambahan dari Bapak Mardigu",
   "phase_name": "Fase 1: Mindset & Subconscious",
-  "updated_at": "2026-10-12T05:05:45.036313",
+  "updated_at": "2026-10-13T05:06:28.766632",
   "history": [
     {
       "index": 17,
@@ -107,7 +107,13 @@
       "lesson_id": "1QhDaeEjlQWkp_YK9gXqUQ-7ybHz7v1VC",
       "title": "12. Bisnis Model",
       "date": "2026-10-12"
+    },
+    {
+      "index": 34,
+      "lesson_id": "1XIf3TTXfulezDeSOnBJ_2gf8BZ-ag1VY",
+      "title": "13. Bisnis Model Sekali Lagi",
+      "date": "2026-10-13"
     }
   ],
-  "last_run_date": "2026-10-12"
+  "last_run_date": "2026-10-13"
 }
