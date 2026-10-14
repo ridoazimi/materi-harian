@@ -1,10 +1,10 @@
 {
-  "current_index": 36,
-  "lesson_id": "1Mc6dgjqeYDJA1A7LdnEW2vk7dRGyXcsL",
-  "title": "15. Bisnis Better Than 123",
+  "current_index": 37,
+  "lesson_id": "1A21IsyL4i7w4BiW8g51JaoEf_62C9FqR",
+  "title": "16. Dream Bisnis",
   "folder": "2. Special Tambahan dari Bapak Mardigu",
   "phase_name": "Fase 1: Mindset & Subconscious",
-  "updated_at": "2026-10-14T05:05:15.111644",
+  "updated_at": "2026-10-15T05:03:35.365625",
   "history": [
     {
       "index": 17,
@@ -119,7 +119,13 @@
       "lesson_id": "1bHsxlIQs05sgsNBOjdeUUCpVHEaUpVFN",
       "title": "14. Bisnis Semudah 123",
       "date": "2026-10-14"
+    },
+    {
+      "index": 36,
+      "lesson_id": "1Mc6dgjqeYDJA1A7LdnEW2vk7dRGyXcsL",
+      "title": "15. Bisnis Better Than 123",
+      "date": "2026-10-15"
     }
   ],
-  "last_run_date": "2026-10-14"
+  "last_run_date": "2026-10-15"
 }

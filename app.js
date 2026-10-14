@@ -1,5 +1,5 @@
 const KEY = "rido_study_hub_v2";
-const TODAY_ID = "1Mc6dgjqeYDJA1A7LdnEW2vk7dRGyXcsL"; // 15. Bisnis Better Than 123
+const TODAY_ID = "1A21IsyL4i7w4BiW8g51JaoEf_62C9FqR"; // 16. Dream Bisnis
 const $ = id => document.getElementById(id);
 const video = $("mainVideo");
 const driveFrame = $("driveFrame");
