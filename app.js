@@ -1,5 +1,5 @@
 const KEY = "rido_study_hub_v2";
-const TODAY_ID = "1A21IsyL4i7w4BiW8g51JaoEf_62C9FqR"; // 16. Dream Bisnis
+const TODAY_ID = "1TRU-wWroJFxfF1PAvANr9ZbU4WK0YgIs"; // 17. Rumus Kaya
 const $ = id => document.getElementById(id);
 const video = $("mainVideo");
 const driveFrame = $("driveFrame");

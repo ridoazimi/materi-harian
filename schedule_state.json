@@ -1,10 +1,10 @@
 {
-  "current_index": 37,
-  "lesson_id": "1A21IsyL4i7w4BiW8g51JaoEf_62C9FqR",
-  "title": "16. Dream Bisnis",
+  "current_index": 38,
+  "lesson_id": "1TRU-wWroJFxfF1PAvANr9ZbU4WK0YgIs",
+  "title": "17. Rumus Kaya",
   "folder": "2. Special Tambahan dari Bapak Mardigu",
   "phase_name": "Fase 1: Mindset & Subconscious",
-  "updated_at": "2026-10-15T05:03:35.365625",
+  "updated_at": "2026-10-16T05:03:42.970866",
   "history": [
     {
       "index": 17,
@@ -125,7 +125,13 @@
       "lesson_id": "1Mc6dgjqeYDJA1A7LdnEW2vk7dRGyXcsL",
       "title": "15. Bisnis Better Than 123",
       "date": "2026-10-15"
+    },
+    {
+      "index": 37,
+      "lesson_id": "1A21IsyL4i7w4BiW8g51JaoEf_62C9FqR",
+      "title": "16. Dream Bisnis",
+      "date": "2026-10-16"
     }
   ],
-  "last_run_date": "2026-10-15"
+  "last_run_date": "2026-10-16"
 }
